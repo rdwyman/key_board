@@ -14,7 +14,11 @@ print(step.bounding_box())
 
 smallerStep = step.scale(0.8, about=(0,0,0))
 
+my_solids = []
+for f in step.faces():
+    my_solids.append(bd.Solid.thicken(f, depth=-1.5))
 
-comp = bd.Compound([smallerStep] + [step])
+x = bd.Compound(my_solids)
 
-bd.export_step(comp, "./shelled.step")
+bd.export_step(x, "./shelled.step")
+bd.export_stl(x, "./tryMe.stl")
