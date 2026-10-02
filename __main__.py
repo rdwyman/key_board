@@ -34,6 +34,12 @@ parser.add_argument("--horizontal-slot-width", default=1.17, type=float)
 parser.add_argument("--slot-depth", default=6, type=float)
 parser.add_argument("--slot-fillet", default=0.3, type=float)
 
+# https://www.brailleauthority.org/size-and-spacing-braille-characters
+parser.add_argument("--dot-diameter", default=1.44, type=float)
+parser.add_argument("--dot-height", default=0.48, type=float)
+parser.add_argument("--dot-horizontal-spacing", default=2.34, type=float)
+parser.add_argument("--dot-vertical-spacing", default=2.34, type=float)
+
 args = parser.parse_args()
 
 base_shell = bd.import_step("./mxmecha_dummy_oneKey.step")
@@ -91,10 +97,26 @@ stem = bd.Cylinder(radius=args.stem_diameter / 2, height=total_height, align=al)
 stem = stem - cross
 stem = stem.translate((0, 0, cap_middle_z_distance - total_height))
 
-key_cap = bd.Compound(children=[key_cap, stem])
+dots = []
+
+
+def add_dot(x_address, y_address):
+    # TODO: Don't use a sphere, use the correct shape of a dot, respect the height
+    x = args.dot_horizontal_spacing * x_address
+    y = args.dot_vertical_spacing * y_address
+    dots.append(bd.Sphere(radius=args.dot_diameter / 2).translate((x, y, 10)))
+
+
+add_dot(0, 0)
+add_dot(1, 1)
+add_dot(1, 2)
+
+key_cap = bd.Compound(children=[key_cap, stem] + dots)
+
 
 # export
 bd.export_step(key_cap, f"{args.out}.step")
 bd.export_stl(key_cap, f"{args.out}.stl")
+
 
 print("done")
