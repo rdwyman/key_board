@@ -45,8 +45,11 @@ base_shell = base_shell.translate(-bb.center() + (0, 0, zDiff))
 
 # thicken key cap shell into a solid
 solids = []
+over_trimmer = bd.Box(
+    9999, 9999, 9999, align=(bd.Align.CENTER, bd.Align.CENTER, bd.Align.MAX)
+)
 for f in base_shell.faces():
-    solids.append(bd.Solid.thicken(f, depth=-args.key_cap_thickness))
+    solids.append(bd.Solid.thicken(f, depth=-args.key_cap_thickness) - over_trimmer)
 key_cap = bd.Compound(solids)
 
 
