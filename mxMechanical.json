@@ -1,0 +1,225 @@
+{
+    "root": {
+        "glyphs": [
+            {
+                "type": "braille",
+                "bindings": {
+                    "letter": "primary"
+                },
+                "encoding": "standard",
+                "center": [
+                    0,
+                    0
+                ],
+                "dotDiameter": 1.44,
+                "dotHeight": 0.48,
+                "dotHorizontalSpacing": 2.34,
+                "dotVerticalSpacing": 2.34
+            },
+            {
+                "type": "nub",
+                "bindings": {
+                    "nub": "nub"
+                },
+                "color": "#FE66A1"
+            },
+            {
+                "type": "marking",
+                "bindings": {
+                    "letter": "caps"
+                },
+                "encoding": "US-std",
+                "font": "./impact.odd",
+                "color": "#1144BB",
+                "extent": [
+                    -0.9,
+                    -0.9,
+                    0.9,
+                    0.9
+                ]
+            },
+            {
+                "type": "marking",
+                "bindings": {
+                    "letter": "primary"
+                },
+                "encoding": "US-std",
+                "font": "./impact.odd",
+                "color": "#1144BB",
+                "extent": [
+                    -0.9,
+                    -0.9,
+                    0.9,
+                    0.9
+                ]
+            }
+        ],
+        "cap": "./mxmecha_dummy_oneKey.step",
+        "children": [
+            {
+                "primary": "`",
+                "caps": "~"
+            },
+            {
+                "primary": "1",
+                "caps": "!"
+            },
+            {
+                "primary": "2",
+                "caps": "@"
+            },
+            {
+                "primary": "3",
+                "caps": "#"
+            },
+            {
+                "primary": "4",
+                "caps": "$"
+            },
+            {
+                "primary": "5",
+                "caps": "%"
+            },
+            {
+                "primary": "6",
+                "caps": "^"
+            },
+            {
+                "primary": "7",
+                "caps": "&"
+            },
+            {
+                "primary": "8",
+                "caps": "*"
+            },
+            {
+                "primary": "9",
+                "caps": "("
+            },
+            {
+                "primary": "0",
+                "caps": ")"
+            },
+            {
+                "primary": "-",
+                "caps": "_"
+            },
+            {
+                "primary": "=",
+                "caps": "+"
+            },
+            {
+                "primary": "q"
+            },
+            {
+                "primary": "w"
+            },
+            {
+                "primary": "e"
+            },
+            {
+                "primary": "r"
+            },
+            {
+                "primary": "t"
+            },
+            {
+                "primary": "y"
+            },
+            {
+                "primary": "u"
+            },
+            {
+                "primary": "i"
+            },
+            {
+                "primary": "o"
+            },
+            {
+                "primary": "p"
+            },
+            {
+                "primary": "[",
+                "caps": "{"
+            },
+            {
+                "primary": "]",
+                "caps": "}"
+            },
+            {
+                "primary": "\\",
+                "caps": "|"
+            },
+            {
+                "primary": "a"
+            },
+            {
+                "primary": "s"
+            },
+            {
+                "primary": "d"
+            },
+            {
+                "primary": "f",
+                "nub": true
+            },
+            {
+                "primary": "g"
+            },
+            {
+                "primary": "h"
+            },
+            {
+                "primary": "j"
+            },
+            {
+                "primary": "k"
+            },
+            {
+                "primary": "f",
+                "nub": true
+            },
+            {
+                "primary": ";",
+                "caps": ":"
+            },
+            {
+                "primary": "'",
+                "caps": "\""
+            },
+            {
+                "primary": "z"
+            },
+            {
+                "primary": "x"
+            },
+            {
+                "primary": "c"
+            },
+            {
+                "primary": "v"
+            },
+            {
+                "primary": "b"
+            },
+            {
+                "primary": "n"
+            },
+            {
+                "primary": "m"
+            },
+            {
+                "primary": ",",
+                "caps": "<"
+            },
+            {
+                "primary": ".",
+                "caps": ">"
+            },
+            {
+                "primary": "/",
+                "caps": "?"
+            }
+        ]
+    }
+}

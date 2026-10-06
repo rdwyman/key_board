@@ -101,10 +101,24 @@ dots = []
 
 
 def add_dot(x_address, y_address):
+    z_sink = 0.0
+
     # TODO: Don't use a sphere, use the correct shape of a dot, respect the height
     x = args.dot_horizontal_spacing * x_address
     y = args.dot_vertical_spacing * y_address
-    dots.append(bd.Sphere(radius=args.dot_diameter / 2).translate((x, y, 10)))
+
+    ray = bd.Axis((0, 0, 9999), (0, 0, -1))
+    res = ray.intersect(key_cap)
+    z = res.vertices()[0].Z - z_sink
+
+    radius = args.dot_diameter / 2
+    hgt = args.dot_height + z_sink
+    scale = hgt / radius
+
+    dot = bd.Sphere(radius=radius / 2)
+    dot = dot.scale((1, 1, scale))
+
+    dots.append(dot.translate((x, y, z)))
 
 
 add_dot(0, 0)
@@ -117,6 +131,5 @@ key_cap = bd.Compound(children=[key_cap, stem] + dots)
 # export
 bd.export_step(key_cap, f"{args.out}.step")
 bd.export_stl(key_cap, f"{args.out}.stl")
-
 
 print("done")
