@@ -1,6 +1,7 @@
 import build123d as bd
 import argparse
-import stem_modeler
+import glyph_applicator_braille
+import glyph_applicator_stem
 
 parser = argparse.ArgumentParser(
     prog="key_board",
@@ -60,7 +61,7 @@ for f in base_shell.faces():
 key_cap = bd.Compound(solids)
 
 
-key_cap = stem_modeler.add_stem(
+key_cap = glyph_applicator_stem.add_stem(
     key_cap,
     args.vertical_slot_width,
     args.vertical_slot_length,
@@ -72,40 +73,15 @@ key_cap = stem_modeler.add_stem(
     args.stem_diameter,
 )
 
+key_cap = glyph_applicator_braille.add_cell(
+    key_cap,
+    args.dot_horizontal_spacing,
+    (0, 0),
+    args.dot_vertical_spacing,
+    args.dot_diameter,
+    args.dot_height,
+)
 
-dots = []
-
-
-def add_dot(x_address, y_address):
-    z_sink = 0.0
-
-    # TODO: Don't use a sphere, use the correct shape of a dot, respect the height
-    x = args.dot_horizontal_spacing * x_address
-    y = args.dot_vertical_spacing * y_address
-
-    ray = bd.Axis((0, 0, 9999), (0, 0, -1))
-    res = ray.intersect(key_cap)
-    z = res.vertices()[0].Z - z_sink
-
-    radius = args.dot_diameter / 2
-    hgt = args.dot_height + z_sink
-    scale = hgt / radius
-
-    dot = bd.Sphere(radius=radius / 2)
-    dot = dot.scale((1, 1, scale))
-
-    dots.append(dot.translate((x, y, z)))
-
-
-add_dot(0, 0)
-add_dot(1, 1)
-add_dot(1, 2)
-
-key_cap = bd.Compound(children=[key_cap] + dots)
-
-
-# export
-bd.export_step(key_cap, f"{args.out}.step")
-bd.export_stl(key_cap, f"{args.out}.stl")
+bd.export_stl(key_cap, f"{args.out}.stl", tolerance=0.01, angular_tolerance=0.3)
 
 print("done")

@@ -1,4 +1,4 @@
-from typing import TypedDict, NotRequired
+from typing import TypedDict
 
 # 6 dot braille
 D1 = 1 << 0
@@ -25,12 +25,12 @@ class LetterGlyph(Glyph):
     fontFile: str
 
 
-class KeyCapData(TypedDict):
-    letter: str
-    cap: CapData
-    stems: list[StemData]
-    glyphs: list[Glyph]
-    children: list[KeyCapData]
+# class KeyCapData(TypedDict):
+#    letter: str
+#    cap: CapData
+#    stems: list[StemData]
+#    glyphs: list[Glyph]
+#    children: list[KeyCapData]
 
 
 class PartialKeyCap(TypedDict, total=False):
