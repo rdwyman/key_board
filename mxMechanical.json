@@ -1,11 +1,25 @@
 {
     "recipe": {
         "cap": {
-            "capShell": "./mxmecha_dummy_oneKey.step"
+            "capShellFile": "./mxmecha_dummy_oneKey.step",
+            "keyCapThickness": 2.5
         },
-        "stem": {
-            "TODO": "Stem Args"
-        },
+        "stems": [
+            {
+                "center": [
+                    0,
+                    0
+                ],
+                "verticalSlotLength": 4.1,
+                "verticalSlotWidth": 1.17,
+                "horizontalSlotLength": 4.1,
+                "horizontalSlotWidth": 1.17,
+                "slotDepth": 6,
+                "slotFillet": 0.3,
+                "stemHeight": 4.0,
+                "stemDiameter": 6.0
+            }
+        ],
         "braille": {
             "bindings": {
                 "letter": "primary"
@@ -28,32 +42,28 @@
         },
         "markings": [
             {
-                "bindings": {
-                    "letter": "caps"
-                },
-                "encoding": "US-std",
-                "font": "./impact.odd",
-                "color": "#1144BB",
+                "datum": "caps",
                 "extent": [
                     -0.9,
                     -0.9,
                     0.9,
                     0.9
-                ]
+                ],
+                "fontFile": "./impact.odd",
+                "recess": 1.0,
+                "extrussion": 0.0
             },
             {
-                "bindings": {
-                    "letter": "primary"
-                },
-                "encoding": "US-std",
-                "font": "./impact.odd",
-                "color": "#1144BB",
+                "datum": "primary",
                 "extent": [
                     -0.9,
                     -0.9,
                     0.9,
                     0.9
-                ]
+                ],
+                "fontFile": "./impact.odd",
+                "recess": 1.0,
+                "extrussion": 0.0
             }
         ]
     },

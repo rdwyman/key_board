@@ -1,27 +1,42 @@
-from typing import TypedDict
+from typing import NotRequired, TypedDict
 import build123d as bd
-from keycap_types import D1, D2, D3, D4, D5, D6, D7, D8
+
+# 6 dot braille
+D1 = 1 << 0
+D2 = 1 << 1
+D3 = 1 << 2
+D4 = 1 << 3
+D5 = 1 << 4
+D6 = 1 << 5
+
+# 8 dot braille
+D7 = 1 << 6
+D8 = 1 << 7
 
 
-class BrailleApplicatorContext(TypedDict):
+class BrailleArgs(TypedDict):
     datum: str
-    encoding: str
-    center: tuple[float, float]
-    dotDiameter: float
-    dotHeight: float
-    dotHorizontalSpacing: float
-    dotVerticalSpacing: float
+    encoding: NotRequired[str]
+    center: NotRequired[tuple[float, float]]
+    dotDiameter: NotRequired[float]
+    dotHeight: NotRequired[float]
+    dotHorizontalSpacing: NotRequired[float]
+    dotVerticalSpacing: NotRequired[float]
 
 
-def make_cell(
-    key_cap: bd.Compound,
-    dotHorizontalSpacing: float,
-    center: tuple[float, float],
-    dotVerticalSpacing: float,
-    dotDiameter: float,
-    dotHeight: float,
-) -> bd.Compound:
+def make_cell(key_cap: bd.Compound, data, args: BrailleArgs) -> bd.Compound:
 
+    datum = args.get("datum")
+    encoding = args.get("encoding", "./encoding.json")
+    center = args.get("center", (0, 0))
+
+    # defaults from https://www.brailleauthority.org/size-and-spacing-braille-characters
+    dotDiameter = args.get("dotDiameter", 1.44)
+    dotHeight = args.get("dotHeight", 0.48)
+    dotHorizontalSpacing = args.get("dotHorizontalSpacing", 2.34)
+    dotVerticalSpacing = args.get("dotVerticalSpacing", 2.34)
+
+    # TODO: Use data, datum and encoding to determine the dots to use
     brailleCode = D1 | D2 | D4 | D6
 
     z_sink = 0.0
