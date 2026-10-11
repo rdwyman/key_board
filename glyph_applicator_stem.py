@@ -1,17 +1,18 @@
 import build123d as bd
 
 
-def make_stem(
-    key_cap: bd.Compound,
-    vertical_slot_width: float,
-    vertical_slot_length: float,
-    horizontal_slot_length: float,
-    horizontal_slot_width: float,
-    slot_depth: float,
-    slot_fillet: float,
-    stem_height: float,
-    stem_diameter: float,
-) -> bd.Compound:
+class StemKwargs:
+    vertical_slot_width: float
+    vertical_slot_length: float
+    horizontal_slot_length: float
+    horizontal_slot_width: float
+    slot_depth: float
+    slot_fillet: float
+    stem_height: float
+    stem_diameter: float
+
+
+def make_stem(key_cap: bd.Compound, args: StemKwargs) -> bd.Compound:
 
     # build stem key
     al = (bd.Align.CENTER, bd.Align.CENTER, bd.Align.MIN)
