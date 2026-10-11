@@ -13,14 +13,14 @@ class BrailleApplicatorContext(TypedDict):
     dotVerticalSpacing: float
 
 
-def add_cell(
+def make_cell(
     key_cap: bd.Compound,
     dotHorizontalSpacing: float,
     center: tuple[float, float],
     dotVerticalSpacing: float,
     dotDiameter: float,
     dotHeight: float,
-):
+) -> bd.Compound:
 
     brailleCode = D1 | D2 | D4 | D6
 
@@ -51,6 +51,8 @@ def add_cell(
         dot = bd.Sphere(radius=radius / 2)
         dot = dot.scale((1, 1, scale))
 
+        dot.color = bd.Color("blue")
+
         dot_objs.append(dot.translate((x, y, z)))
 
     mod_8_dot = 0.5 if is_8_dot else 0
@@ -73,5 +75,4 @@ def add_cell(
     if brailleCode & D8:
         add_dot(+0.5, -2.0 + mod_8_dot)
 
-    key_cap = bd.Compound(children=[key_cap] + dot_objs)
-    return key_cap
+    return bd.Compound(dot_objs)

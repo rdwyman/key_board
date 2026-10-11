@@ -1,7 +1,16 @@
 import build123d as bd
 import argparse
 import glyph_applicator_braille
+import glyph_applicator_marking
 import glyph_applicator_stem
+
+
+class KeyParts:
+    keyCap: bd.Compound
+    braille: bd.Compound
+    markings: bd.Compound
+    stem: bd.Compound
+
 
 parser = argparse.ArgumentParser(
     prog="key_board",
@@ -44,6 +53,8 @@ parser.add_argument("--dot-vertical-spacing", default=2.34, type=float)
 
 args = parser.parse_args()
 
+keyParts = KeyParts()
+
 base_shell = bd.import_step("./mxmecha_dummy_oneKey.step")
 
 # move base shell to origin above XY plane
@@ -58,11 +69,11 @@ over_trimmer = bd.Box(
 )
 for f in base_shell.faces():
     solids.append(bd.Solid.thicken(f, depth=-args.key_cap_thickness) - over_trimmer)
-key_cap = bd.Compound(solids)
+keyParts.keyCap = bd.Compound(solids)
 
 
-key_cap = glyph_applicator_stem.add_stem(
-    key_cap,
+keyParts.stem = glyph_applicator_stem.make_stem(
+    keyParts.keyCap,
     args.vertical_slot_width,
     args.vertical_slot_length,
     args.horizontal_slot_length,
@@ -73,8 +84,8 @@ key_cap = glyph_applicator_stem.add_stem(
     args.stem_diameter,
 )
 
-key_cap = glyph_applicator_braille.add_cell(
-    key_cap,
+keyParts.braille = glyph_applicator_braille.make_cell(
+    keyParts.keyCap,
     args.dot_horizontal_spacing,
     (0, 0),
     args.dot_vertical_spacing,
@@ -82,6 +93,19 @@ key_cap = glyph_applicator_braille.add_cell(
     args.dot_height,
 )
 
-bd.export_stl(key_cap, f"{args.out}.stl", tolerance=0.01, angular_tolerance=0.3)
+
+keyParts.markings = glyph_applicator_marking.make_marking(keyParts.keyCap, "R", "asdf")
+
+cap = keyParts.keyCap
+print(cap)
+cap = bd.Compound(cap.solids())
+
+cap = cap - keyParts.braille - keyParts.markings
+
+
+part = bd.Compound(children=[cap, keyParts.markings, keyParts.braille, keyParts.stem])
+
+
+bd.export_step(part, f"{args.out}.step")
 
 print("done")

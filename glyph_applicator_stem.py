@@ -1,7 +1,7 @@
 import build123d as bd
 
 
-def add_stem(
+def make_stem(
     key_cap: bd.Compound,
     vertical_slot_width: float,
     vertical_slot_length: float,
@@ -11,8 +11,7 @@ def add_stem(
     slot_fillet: float,
     stem_height: float,
     stem_diameter: float,
-):
-    pass
+) -> bd.Compound:
 
     # build stem key
     al = (bd.Align.CENTER, bd.Align.CENTER, bd.Align.MIN)
@@ -51,4 +50,4 @@ def add_stem(
     stem = stem - cross
     stem = stem.translate((0, 0, cap_middle_z_distance - total_height))
 
-    return bd.Compound(children=[key_cap, stem])
+    return stem
