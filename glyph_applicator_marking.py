@@ -10,7 +10,9 @@ class MarkingArgs(TypedDict):
     extrusion: NotRequired[float]
 
 
-def make_marking(keyCap: bd.Compound, data: dict, args: MarkingArgs) -> bd.Compound:
+def make_marking(
+    keyCap: bd.Compound, data: dict, args: MarkingArgs
+) -> bd.Compound | None:
 
     datum = args.get("datum")
     extent = args.get("extent")
@@ -33,4 +35,4 @@ def make_marking(keyCap: bd.Compound, data: dict, args: MarkingArgs) -> bd.Compo
         return bd.Compound(textObj)
 
     else:
-        return bd.Compound()
+        return None

@@ -19,6 +19,14 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "-o", "--out", help="Output file base name", default="./result", type=str
 )
+parser.add_argument(
+    "-x",
+    "--build-plate-x",
+    help="Allowed width of a row of keys - should be less than the intended printer's build plate width",
+    default=150,
+    type=float,
+)
+cliArgs = parser.parse_args()
 
 # TODO: Get from command line
 # TODO: Deep merge multiple JSON documents on top of each other
@@ -26,12 +34,15 @@ with open("./mxMechanical.json") as f:
     args = json.load(f)
 
 
-class KeyParts:
+class Key:
     keyCap: bd.Compound
     braille: bd.Compound
-    nub: bd.Compound
+    nub: bd.Compound | None
     markings: bd.Compound
     stems: bd.Compound
+
+
+keys: list[Key] = []
 
 
 class Recipe(TypedDict):
@@ -50,34 +61,38 @@ class Node(TypedDict):
 
 def actualize(data, recipe: Recipe):
 
-    keyParts = KeyParts()
+    key = Key()
 
     if "cap" in recipe:
-        keyParts.keyCap = glyph_applicator_cap.make_cap(recipe["cap"])
+        key.keyCap = glyph_applicator_cap.make_cap(recipe["cap"])
     else:
         raise Exception("Cap should be available here")
 
     if "stems" in recipe:
         stemSolids = []
         for stem in recipe["stems"]:
-            stemSolids.extend(glyph_applicator_stem.make_stem(keyParts.keyCap, stem))
-        keyParts.stems = bd.Compound(stemSolids)
+            stemSolids.extend(glyph_applicator_stem.make_stem(key.keyCap, stem))
+        key.stems = bd.Compound(stemSolids)
 
     if "braille" in recipe:
-        keyParts.braille = glyph_applicator_braille.make_cell(
-            keyParts.keyCap, data, recipe["braille"]
+        key.braille = glyph_applicator_braille.make_cell(
+            key.keyCap, data, recipe["braille"]
         )
 
     if "nub" in recipe:
-        keyParts.nub = glyph_applicator_nub.make_nub(keyParts.keyCap, recipe["nub"])
+        key.nub = glyph_applicator_nub.make_nub(key.keyCap, recipe["nub"])
 
     if "markings" in recipe:
         markingSolids = []
         for marking in recipe["markings"]:
-            markingSolids.extend(
-                glyph_applicator_marking.make_marking(keyParts.keyCap, data, marking)
-            )
-        keyParts.markings = bd.Compound(markingSolids)
+
+            m = glyph_applicator_marking.make_marking(key.keyCap, data, marking)
+            if m:
+                markingSolids.extend(m)
+                key.keyCap = key.keyCap - m
+        key.markings = bd.Compound(markingSolids)
+
+    keys.append(key)
 
 
 def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
@@ -111,7 +126,46 @@ def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
 
 visit(args, {}, {}, 0)
 
+primary: list[bd.Solid] = []
+markings: list[bd.Solid] = []
+braille: list[bd.Solid] = []
+nubs: list[bd.Solid] = []
 
-bd.export_step(part, f"{args.out}.step")
+x = 0
+y = 0
+maxY = 0
+spacing = 2
+
+for key in keys:
+
+    s = key.keyCap.bounding_box().size
+
+    x = x + s.X + spacing
+    maxY = max(s.Y + spacing, maxY)
+
+    if x > cliArgs.build_plate_x:
+        x = 0
+        y = y + maxY
+        maxY = 0
+
+    primary.extend(key.keyCap.translate((x, y, 0.0)).solids())
+    for stem in key.stems:
+        primary.extend(stem.translate((x, y, 0.0)).solids())
+    markings.extend(key.markings.translate((x, y, 0.0)).solids())
+    braille.extend(key.braille.translate((x, y, 0.0)).solids())
+    if key.nub:
+        nubs.extend(key.nub.translate((x, y, 0.0)).solids())
+
+primaryCompond = bd.Compound(primary, label="primary")
+markingsCompond = bd.Compound(markings, label="markings")
+brailleCompond = bd.Compound(braille, label="braille")
+nubsCompond = bd.Compound(nubs, label="nubs")
+
+
+keyBoard = bd.Compound(
+    children=[primaryCompond, markingsCompond, brailleCompond, nubsCompond]
+)
+
+bd.export_step(keyBoard, "./result.step")
 
 print("done")
