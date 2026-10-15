@@ -7,8 +7,8 @@ import glyph_applicator_stem
 import glyph_applicator_nub
 import json
 import textwrap
+from deepmerge import always_merger
 from typing import NotRequired, TypedDict
-from jsonmerge import merge
 
 parser = argparse.ArgumentParser(
     prog="key_board",
@@ -33,7 +33,6 @@ cliArgs = parser.parse_args()
 
 def applySchemata(target, schemata):
     """merges schemata together"""
-    appendArraySchema = schema = {"properties": {"tags": {"mergeStrategy": "append"}}}
     for schema in schemata:
         print(schema)
         with open(schema) as f:
@@ -41,7 +40,7 @@ def applySchemata(target, schemata):
         if "overlays" in overlay:
             overlay = applySchemata(overlay, overlay["overlays"])
             overlay.pop("overlays", None)
-        target = merge(target, overlay, appendArraySchema)
+        target = always_merger.merge(target, overlay)
     return target
 
 
@@ -51,7 +50,7 @@ master = applySchemata({}, cliArgs.schemata)
 class Key:
     keyCap: bd.Compound
     braille: bd.Compound
-    nub: bd.Compound | None
+    nub: bd.Compound
     markings: bd.Compound
     stems: bd.Compound
 
@@ -99,7 +98,11 @@ def actualize(data, recipe: Recipe):
         key.braille = bd.Compound()
 
     if "nub" in recipe:
-        key.nub = glyph_applicator_nub.make_nub(key.keyCap, recipe["nub"])
+        n = glyph_applicator_nub.make_nub(key.keyCap, recipe["nub"])
+        if n:
+            key.nub = n
+        else:
+            key.nub = bd.Compound()
     else:
         key.nub = bd.Compound()
 
@@ -121,13 +124,13 @@ def actualize(data, recipe: Recipe):
 def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
     """recursively visits and actualizes the keys described in a schema"""
     if "recipe" in node:
-        currentRecipe = merge(currentRecipe, node["recipe"])
+        currentRecipe = always_merger.merge(currentRecipe, node["recipe"])
 
     if "data" in node:
-        currentData = merge(currentData, node["data"])
+        currentData = always_merger.merge(currentData, node["data"])
     elif "recipe" not in node and "children" not in node:
         # short hand for leaf node
-        currentData = merge(currentData, node)
+        currentData = always_merger.merge(currentData, node)
 
     isLeaf = "children" not in node
 
@@ -189,6 +192,6 @@ keyBoard = bd.Compound(
     children=[primaryCompond, markingsCompond, brailleCompond, nubsCompond]
 )
 
-bd.export_step(keyBoard, "./resultBasicNOMARK.step")
+bd.export_step(keyBoard, "./result.step")
 
 print("done")
