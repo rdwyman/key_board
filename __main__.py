@@ -16,6 +16,8 @@ parser = argparse.ArgumentParser(
     epilog="TODO: Add license?",
 )
 
+parser.add_argument("schemata", type=str, nargs="+")
+
 parser.add_argument(
     "-o", "--out", help="Output file base name", default="./result", type=str
 )
@@ -28,10 +30,22 @@ parser.add_argument(
 )
 cliArgs = parser.parse_args()
 
-# TODO: Get from command line
-# TODO: Deep merge multiple JSON documents on top of each other
-with open("./mxMechanical.json") as f:
-    args = json.load(f)
+
+def applySchemata(target, schemata):
+    """merges schemata together"""
+    appendArraySchema = schema = {"properties": {"tags": {"mergeStrategy": "append"}}}
+    for schema in schemata:
+        print(schema)
+        with open(schema) as f:
+            overlay = json.load(f)
+        if "overlays" in overlay:
+            overlay = applySchemata(overlay, overlay["overlays"])
+            overlay.pop("overlays", None)
+        target = merge(target, overlay, appendArraySchema)
+    return target
+
+
+master = applySchemata({}, cliArgs.schemata)
 
 
 class Key:
@@ -60,6 +74,7 @@ class Node(TypedDict):
 
 
 def actualize(data, recipe: Recipe):
+    """builds and appends a new key to the keys array"""
 
     key = Key()
 
@@ -73,14 +88,20 @@ def actualize(data, recipe: Recipe):
         for stem in recipe["stems"]:
             stemSolids.extend(glyph_applicator_stem.make_stem(key.keyCap, stem))
         key.stems = bd.Compound(stemSolids)
+    else:
+        key.stems = bd.Compound()
 
     if "braille" in recipe:
         key.braille = glyph_applicator_braille.make_cell(
             key.keyCap, data, recipe["braille"]
         )
+    else:
+        key.braille = bd.Compound()
 
     if "nub" in recipe:
         key.nub = glyph_applicator_nub.make_nub(key.keyCap, recipe["nub"])
+    else:
+        key.nub = bd.Compound()
 
     if "markings" in recipe:
         markingSolids = []
@@ -91,11 +112,14 @@ def actualize(data, recipe: Recipe):
                 markingSolids.extend(m)
                 key.keyCap = key.keyCap - m
         key.markings = bd.Compound(markingSolids)
+    else:
+        key.markings = bd.Compound()
 
     keys.append(key)
 
 
 def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
+    """recursively visits and actualizes the keys described in a schema"""
     if "recipe" in node:
         currentRecipe = merge(currentRecipe, node["recipe"])
 
@@ -124,7 +148,7 @@ def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
             visit(child, currentData, currentRecipe, indent + 2)
 
 
-visit(args, {}, {}, 0)
+visit(master, {}, {}, 0)
 
 primary: list[bd.Solid] = []
 markings: list[bd.Solid] = []
@@ -153,8 +177,7 @@ for key in keys:
         primary.extend(stem.translate((x, y, 0.0)).solids())
     markings.extend(key.markings.translate((x, y, 0.0)).solids())
     braille.extend(key.braille.translate((x, y, 0.0)).solids())
-    if key.nub:
-        nubs.extend(key.nub.translate((x, y, 0.0)).solids())
+    nubs.extend(key.nub.translate((x, y, 0.0)).solids())
 
 primaryCompond = bd.Compound(primary, label="primary")
 markingsCompond = bd.Compound(markings, label="markings")
@@ -166,6 +189,6 @@ keyBoard = bd.Compound(
     children=[primaryCompond, markingsCompond, brailleCompond, nubsCompond]
 )
 
-bd.export_step(keyBoard, "./result.step")
+bd.export_step(keyBoard, "./resultBasicNOMARK.step")
 
 print("done")

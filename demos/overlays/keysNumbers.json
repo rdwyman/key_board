@@ -1,0 +1,44 @@
+{
+    "children": [
+        {
+            "primary": "1",
+            "shift": "!"
+        },
+        {
+            "primary": "2",
+            "shift": "@"
+        },
+        {
+            "primary": "3",
+            "shift": "#"
+        },
+        {
+            "primary": "4",
+            "shift": "$"
+        },
+        {
+            "primary": "5",
+            "shift": "%"
+        },
+        {
+            "primary": "6",
+            "shift": "^"
+        },
+        {
+            "primary": "7",
+            "shift": "&"
+        },
+        {
+            "primary": "8",
+            "shift": "*"
+        },
+        {
+            "primary": "9",
+            "shift": "("
+        },
+        {
+            "primary": "0",
+            "shift": ")"
+        }
+    ]
+}

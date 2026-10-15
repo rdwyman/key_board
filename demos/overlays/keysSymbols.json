@@ -1,0 +1,48 @@
+{
+    "children": [
+        {
+            "primary": "`",
+            "shift": "~"
+        },
+        {
+            "primary": "-",
+            "shift": "_"
+        },
+        {
+            "primary": "=",
+            "shift": "+"
+        },
+        {
+            "primary": "[",
+            "shift": "{"
+        },
+        {
+            "primary": "]",
+            "shift": "}"
+        },
+        {
+            "primary": "\\",
+            "shift": "|"
+        },
+        {
+            "primary": ";",
+            "shift": ":"
+        },
+        {
+            "primary": "'",
+            "shift": "\""
+        },
+        {
+            "primary": ",",
+            "shift": "<"
+        },
+        {
+            "primary": ".",
+            "shift": ">"
+        },
+        {
+            "primary": "/",
+            "shift": "?"
+        }
+    ]
+}

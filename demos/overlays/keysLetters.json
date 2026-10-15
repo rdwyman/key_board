@@ -1,0 +1,84 @@
+{
+    "children": [
+        {
+            "primary": "q"
+        },
+        {
+            "primary": "w"
+        },
+        {
+            "primary": "e"
+        },
+        {
+            "primary": "r"
+        },
+        {
+            "primary": "t"
+        },
+        {
+            "primary": "y"
+        },
+        {
+            "primary": "u"
+        },
+        {
+            "primary": "i"
+        },
+        {
+            "primary": "o"
+        },
+        {
+            "primary": "p"
+        },
+        {
+            "primary": "a"
+        },
+        {
+            "primary": "s"
+        },
+        {
+            "primary": "d"
+        },
+        {
+            "primary": "f",
+            "nub": true
+        },
+        {
+            "primary": "g"
+        },
+        {
+            "primary": "h"
+        },
+        {
+            "primary": "j",
+            "nub": true
+        },
+        {
+            "primary": "k"
+        },
+        {
+            "primary": "l"
+        },
+        {
+            "primary": "z"
+        },
+        {
+            "primary": "x"
+        },
+        {
+            "primary": "c"
+        },
+        {
+            "primary": "v"
+        },
+        {
+            "primary": "b"
+        },
+        {
+            "primary": "n"
+        },
+        {
+            "primary": "m"
+        }
+    ]
+}

@@ -2,12 +2,38 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger",
+            "name": "Basic Keyboard",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ""
+            "args": [
+                "${workspaceFolder}/demos/keyboard.json",
+                "-o ./resultBasicKeyboard.step"
+            ]
+        },
+        {
+            "name": "Braille Keyboard",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/__main__.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/demos/keyboardBraille.json",
+                "-o ./resultBrailleKeyboard.step"
+            ]
+        },
+        {
+            "name": "CLI Overlay Test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/__main__.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/demos/keyboard.json",
+                "${workspaceFolder}/demos/overlays/applicatorBrailleStd.json",
+                "-o ./resultBrailleKeyboardViaCliOverlay.step"
+            ]
         }
     ]
 }

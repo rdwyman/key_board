@@ -1,0 +1,10 @@
+{
+    "recipe": {
+        "braille": {
+            "dotDiameter": 2.88,
+            "dotHeight": 0.96,
+            "dotHorizontalSpacing": 4.68,
+            "dotVerticalSpacing": 4.68
+        }
+    }
+}

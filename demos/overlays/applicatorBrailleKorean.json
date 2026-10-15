@@ -1,0 +1,18 @@
+{
+    "recipe": {
+        "braille": {
+            "bindings": {
+                "letter": "primary"
+            },
+            "encoding": "korean",
+            "center": [
+                0,
+                0
+            ],
+            "dotDiameter": 1.44,
+            "dotHeight": 0.48,
+            "dotHorizontalSpacing": 2.34,
+            "dotVerticalSpacing": 2.34
+        }
+    }
+}

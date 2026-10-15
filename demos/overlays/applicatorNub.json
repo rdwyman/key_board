@@ -1,0 +1,10 @@
+{
+    "recipe": {
+        "nub": {
+            "bindings": {
+                "nub": "nub"
+            },
+            "color": "#FE66A1"
+        }
+    }
+}

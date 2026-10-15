@@ -1,0 +1,20 @@
+{
+    "recipe": {
+        "stems": [
+            {
+                "center": [
+                    0,
+                    0
+                ],
+                "verticalSlotLength": 4.1,
+                "verticalSlotWidth": 1.0,
+                "horizontalSlotLength": 4.1,
+                "horizontalSlotWidth": 1.0,
+                "slotDepth": 6,
+                "slotFillet": 0.3,
+                "stemHeight": 4.0,
+                "stemDiameter": 6.0
+            }
+        ]
+    }
+}
