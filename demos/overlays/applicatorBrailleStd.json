@@ -1,10 +1,12 @@
 {
+    "overlays": [
+        "./demos/overlays/encodingBrailleEnglish.json"
+    ],
     "recipe": {
         "braille": {
             "bindings": {
                 "letter": "primary"
             },
-            "encoding": "english",
             "center": [
                 0,
                 0

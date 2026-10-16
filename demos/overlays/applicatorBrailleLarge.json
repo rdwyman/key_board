@@ -1,4 +1,7 @@
 {
+    "overlays": [
+        "./demos/overlays/applicatorBrailleStd.json"
+    ],
     "recipe": {
         "braille": {
             "dotDiameter": 2.88,

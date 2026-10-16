@@ -1,10 +1,12 @@
 {
+    "overlays": [
+        "./demos/overlays/encodingBrailleKorean.json"
+    ],
     "recipe": {
         "braille": {
             "bindings": {
                 "letter": "primary"
             },
-            "encoding": "korean",
             "center": [
                 0,
                 0

@@ -1,0 +1,89 @@
+{
+    "children": [
+        {
+            "primary": "ㅂ",
+            "shift": "ㅃ"
+        },
+        {
+            "primary": "ㅈ",
+            "shift": "ㅉ"
+        },
+        {
+            "primary": "ㄷ",
+            "shift": "ㄸ"
+        },
+        {
+            "primary": "ㄱ",
+            "shift": "ㄲ"
+        },
+        {
+            "primary": "ㅅ",
+            "shift": "ㅆ"
+        },
+        {
+            "primary": "ㅛ"
+        },
+        {
+            "primary": "ㅕ"
+        },
+        {
+            "primary": "ㅑ"
+        },
+        {
+            "primary": "ㅐ",
+            "shift": "ㅒ"
+        },
+        {
+            "primary": "ㅔ",
+            "shift": "ㅖ"
+        },
+        {
+            "primary": "ㅁ"
+        },
+        {
+            "primary": "ㄴ"
+        },
+        {
+            "primary": "ㅇ"
+        },
+        {
+            "primary": "ㄹ"
+        },
+        {
+            "primary": "ㅎ"
+        },
+        {
+            "primary": "ㅗ"
+        },
+        {
+            "primary": "ㅓ"
+        },
+        {
+            "primary": "ㅏ"
+        },
+        {
+            "primary": "ㅣ"
+        },
+        {
+            "primary": "ㅋ"
+        },
+        {
+            "primary": "ㅌ"
+        },
+        {
+            "primary": "ㅊ"
+        },
+        {
+            "primary": "ㅍ"
+        },
+        {
+            "primary": "ㅠ"
+        },
+        {
+            "primary": "ㅜ"
+        },
+        {
+            "primary": "ㅡ"
+        }
+    ]
+}
