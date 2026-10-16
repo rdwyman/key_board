@@ -4,7 +4,8 @@ from typing import NotRequired, TypedDict
 
 class MarkingArgs(TypedDict):
     datum: str
-    extent: tuple[float, float, float, float]
+    fontSize: float
+    center: tuple[float, float]
     fontFile: NotRequired[str]
     recess: NotRequired[float]
     extrusion: NotRequired[float]
@@ -15,7 +16,8 @@ def make_marking(
 ) -> bd.Compound | None:
 
     datum = args.get("datum")
-    extent = args.get("extent")
+    fontSize = args.get("fontSize")
+    center = args.get("center")
     fontFile = args.get("fontFile")
     recess = args.get("recess")
     extrussion = args.get("extrusion")
@@ -24,10 +26,18 @@ def make_marking(
 
         text = data[datum]
 
-        ray = bd.Axis((0, 0, 9999), (0, 0, -1))
-        res = ray.intersect(keyCap)
-
-        label = bd.Text(text, font_size=5, align=bd.Align.CENTER)
+        bb = keyCap.bounding_box()
+        if fontFile:
+            fontFaces = bd.FontManager().register_font(fontFile)
+            label = bd.Text(
+                text, font_size=fontSize, align=bd.Align.CENTER, font=fontFaces[0]
+            ).translate((center[0] * bb.size.X / 2, center[1] * bb.size.Y / 2, 0))
+        else:
+            label = bd.Text(
+                text,
+                font_size=fontSize,
+                align=bd.Align.CENTER,
+            ).translate((center[0] * bb.size.X / 2, center[1] * bb.size.Y / 2, 0))
 
         textObj = [bd.Solid.extrude(f, (0, 0, 999)) for f in label.faces()]
 

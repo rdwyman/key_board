@@ -18,6 +18,14 @@
             "args": "${workspaceFolder}/demos/showboat.json",
         },
         {
+            "name": "Korean Braille Keyboard",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/__main__.py",
+            "console": "integratedTerminal",
+            "args": "${workspaceFolder}/demos/keyboardBrailleKorean.json",
+        },
+        {
             "name": "Braille Keyboard",
             "type": "debugpy",
             "request": "launch",

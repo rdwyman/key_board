@@ -1,84 +1,84 @@
 {
     "children": [
         {
-            "primary": "q"
+            "primary": "Q"
         },
         {
-            "primary": "w"
+            "primary": "W"
         },
         {
-            "primary": "e"
+            "primary": "E"
         },
         {
-            "primary": "r"
+            "primary": "R"
         },
         {
-            "primary": "t"
+            "primary": "T"
         },
         {
-            "primary": "y"
+            "primary": "Y"
         },
         {
-            "primary": "u"
+            "primary": "U"
         },
         {
-            "primary": "i"
+            "primary": "I"
         },
         {
-            "primary": "o"
+            "primary": "O"
         },
         {
-            "primary": "p"
+            "primary": "P"
         },
         {
-            "primary": "a"
+            "primary": "A"
         },
         {
-            "primary": "s"
+            "primary": "S"
         },
         {
-            "primary": "d"
+            "primary": "D"
         },
         {
-            "primary": "f",
+            "primary": "F",
             "nub": true
         },
         {
-            "primary": "g"
+            "primary": "G"
         },
         {
-            "primary": "h"
+            "primary": "H"
         },
         {
-            "primary": "j",
+            "primary": "J",
             "nub": true
         },
         {
-            "primary": "k"
+            "primary": "K"
         },
         {
-            "primary": "l"
+            "primary": "L"
         },
         {
-            "primary": "z"
+            "primary": "Z"
         },
         {
-            "primary": "x"
+            "primary": "X"
         },
         {
-            "primary": "c"
+            "primary": "C"
         },
         {
-            "primary": "v"
+            "primary": "V"
         },
         {
-            "primary": "b"
+            "primary": "B"
         },
         {
-            "primary": "n"
+            "primary": "N"
         },
         {
-            "primary": "m"
+            "primary": "M"
         }
     ]
 }

@@ -6,14 +6,13 @@
         },
         "markings": [
             {
-                "datum": "shift",
-                "extent": [
-                    -0.9,
-                    -0.9,
-                    0.9,
-                    0.9
+                "datum": "primary",
+                "center": [
+                    0,
+                    0
                 ],
-                "fontFile": "./impact.odd",
+                "fontSize": 14,
+                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                 "recess": 1.0,
                 "extrussion": 0.0
             }
@@ -22,6 +21,55 @@
     "children": [
         {
             "recipe": {
+                "cap": {
+                    "keyCapThickness": 1.0
+                },
+                "markings": [
+                    {
+                        "datum": "primary",
+                        "center": [
+                            -0.3,
+                            0.5
+                        ],
+                        "fontSize": 7,
+                        "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                        "recess": 1.0,
+                        "extrussion": 0.0
+                    },
+                    {
+                        "datum": "primary",
+                        "center": [
+                            0.3,
+                            -0.5
+                        ],
+                        "fontSize": 7,
+                        "fontFile": "./demos/fonts/Roboto.ttf",
+                        "recess": 1.0,
+                        "extrussion": 0.0
+                    },
+                    {
+                        "datum": "primary",
+                        "center": [
+                            -0.3,
+                            -0.5
+                        ],
+                        "fontSize": 7,
+                        "fontFile": "./demos/fonts/Roboto.ttf",
+                        "recess": 1.0,
+                        "extrussion": 0.0
+                    },
+                    {
+                        "datum": "primary",
+                        "center": [
+                            0.3,
+                            0.5
+                        ],
+                        "fontSize": 7,
+                        "fontFile": "./demos/fonts/Roboto.ttf",
+                        "recess": 1.0,
+                        "extrussion": 0.0
+                    }
+                ],
                 "stems": [
                     {
                         "center": [
@@ -42,11 +90,23 @@
             "children": [
                 {
                     "primary": "r"
+                },
+                {
+                    "primary": "A"
+                },
+                {
+                    "primary": "B"
+                },
+                {
+                    "primary": "n"
                 }
             ]
         },
         {
-            "primary": "x"
+            "primary": "B"
+        },
+        {
+            "primary": "X"
         }
     ]
 }

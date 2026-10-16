@@ -3,13 +3,12 @@
         "markings": [
             {
                 "datum": "primary",
-                "extent": [
-                    -0.9,
-                    -0.9,
-                    0.9,
-                    0.9
+                "center": [
+                    0.0,
+                    0.0
                 ],
-                "fontFile": "./impact.odd",
+                "fontSize": 14,
+                "fontFile": "./demos/fonts/Roboto.ttf",
                 "recess": 1.0,
                 "extrussion": 0.0
             }
