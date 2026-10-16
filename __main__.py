@@ -49,10 +49,10 @@ master = applySchemata({}, cliArgs.schemata)
 
 class Key:
     keyCap: bd.Compound
-    braille: bd.Compound
-    nub: bd.Compound
-    markings: bd.Compound
-    stems: bd.Compound
+    braille: bd.Compound | None
+    nub: bd.Compound | None
+    markings: bd.Compound | None
+    stems: bd.Compound | None
 
 
 keys: list[Key] = []
@@ -88,23 +88,23 @@ def actualize(data, recipe: Recipe):
             stemSolids.extend(glyph_applicator_stem.make_stem(key.keyCap, stem))
         key.stems = bd.Compound(stemSolids)
     else:
-        key.stems = bd.Compound()
+        key.stems = None
 
     if "braille" in recipe:
         key.braille = glyph_applicator_braille.make_cell(
             key.keyCap, data, recipe["braille"]
         )
     else:
-        key.braille = bd.Compound()
+        key.braille = None
 
     if "nub" in recipe:
         n = glyph_applicator_nub.make_nub(key.keyCap, recipe["nub"])
         if n:
             key.nub = n
         else:
-            key.nub = bd.Compound()
+            key.nub = None
     else:
-        key.nub = bd.Compound()
+        key.nub = None
 
     if "markings" in recipe:
         markingSolids = []
@@ -116,7 +116,7 @@ def actualize(data, recipe: Recipe):
                 key.keyCap = key.keyCap - m
         key.markings = bd.Compound(markingSolids)
     else:
-        key.markings = bd.Compound()
+        key.markings = None
 
     keys.append(key)
 
@@ -148,7 +148,7 @@ def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
     else:
         # recurse
         for child in node["children"]:
-            visit(child, currentData, currentRecipe, indent + 2)
+            visit(child, currentData.copy(), currentRecipe.copy(), indent + 2)
 
 
 visit(master, {}, {}, 0)
@@ -176,11 +176,15 @@ for key in keys:
         maxY = 0
 
     primary.extend(key.keyCap.translate((x, y, 0.0)).solids())
-    for stem in key.stems:
-        primary.extend(stem.translate((x, y, 0.0)).solids())
-    markings.extend(key.markings.translate((x, y, 0.0)).solids())
-    braille.extend(key.braille.translate((x, y, 0.0)).solids())
-    nubs.extend(key.nub.translate((x, y, 0.0)).solids())
+    if key.stems:
+        for stem in key.stems:
+            primary.extend(stem.translate((x, y, 0.0)).solids())
+    if key.markings:
+        markings.extend(key.markings.translate((x, y, 0.0)).solids())
+    if key.braille:
+        braille.extend(key.braille.translate((x, y, 0.0)).solids())
+    if key.nub:
+        nubs.extend(key.nub.translate((x, y, 0.0)).solids())
 
 primaryCompond = bd.Compound(primary, label="primary")
 markingsCompond = bd.Compound(markings, label="markings")
