@@ -1,18 +1,14 @@
 {
     "recipe": {
-        "cap": {
-            "capShellFile": "./assets/keyCaps/mxMechanicalKey.step",
-            "keyCapThickness": 2.5
-        },
         "markings": [
             {
                 "datum": "primary",
                 "center": [
-                    0,
-                    0
+                    0.0,
+                    0.0
                 ],
-                "fontSize": 14,
-                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                "fontSize": 12,
+                "fontFile": "./demos/fonts/Roboto.ttf",
                 "recess": 1.0,
                 "extrussion": 0.0
             }
@@ -22,54 +18,9 @@
         {
             "recipe": {
                 "cap": {
-                    "keyCapThickness": 1.0
+                    "capShellFile": "./assets/keyCaps/mxMechanicalKey.step",
+                    "keyCapThickness": 2.5
                 },
-                "markings": [
-                    {
-                        "datum": "primary",
-                        "center": [
-                            -0.3,
-                            0.5
-                        ],
-                        "fontSize": 7,
-                        "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
-                        "recess": 1.0,
-                        "extrussion": 0.0
-                    },
-                    {
-                        "datum": "primary",
-                        "center": [
-                            0.3,
-                            -0.5
-                        ],
-                        "fontSize": 7,
-                        "fontFile": "./demos/fonts/Roboto.ttf",
-                        "recess": 1.0,
-                        "extrussion": 0.0
-                    },
-                    {
-                        "datum": "primary",
-                        "center": [
-                            -0.3,
-                            -0.5
-                        ],
-                        "fontSize": 7,
-                        "fontFile": "./demos/fonts/Roboto.ttf",
-                        "recess": 1.0,
-                        "extrussion": 0.0
-                    },
-                    {
-                        "datum": "primary",
-                        "center": [
-                            0.3,
-                            0.5
-                        ],
-                        "fontSize": 7,
-                        "fontFile": "./demos/fonts/Roboto.ttf",
-                        "recess": 1.0,
-                        "extrussion": 0.0
-                    }
-                ],
                 "stems": [
                     {
                         "center": [
@@ -89,24 +40,195 @@
             },
             "children": [
                 {
-                    "primary": "r"
+                    "primary": "©️"
                 },
                 {
-                    "primary": "A"
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "upperLeft",
+                                "center": [
+                                    -0.3,
+                                    0.5
+                                ],
+                                "fontSize": 12,
+                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "lowerRight",
+                                "center": [
+                                    0.3,
+                                    -0.5
+                                ],
+                                "fontSize": 12,
+                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
+                    "children": [
+                        {
+                            "upperLeft": "u",
+                            "lowerRight": "s"
+                        }
+                    ]
                 },
                 {
-                    "primary": "B"
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "glyph",
+                                "center": [
+                                    -0,
+                                    0
+                                ],
+                                "fontSize": 3,
+                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
+                    "children": [
+                        {
+                            "glyph": "t"
+                        }
+                    ]
                 },
                 {
-                    "primary": "n"
+                    "recipe": {
+                        "braille": {
+                            "bindings": {
+                                "letter": "primary"
+                            },
+                            "center": [
+                                0,
+                                0
+                            ],
+                            "dotDiameter": 1.44,
+                            "dotHeight": 0.48,
+                            "dotHorizontalSpacing": 2.34,
+                            "dotVerticalSpacing": 2.34,
+                            "encoding": {
+                                "ㅎ": "010110"
+                            }
+                        }
+                    },
+                    "children": [
+                        {
+                            "primary": "ㅎ"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "|\\/|"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "primary": "B"
+            "recipe": {
+                "braille": {
+                    "dotDiameter": 2.88,
+                    "dotHeight": 0.96,
+                    "dotHorizontalSpacing": 4.68,
+                    "dotVerticalSpacing": 4.68,
+                    "encoding": {
+                        "A": "100000",
+                        "C": "100100"
+                    }
+                },
+                "cap": {
+                    "capSolidFile": "./assets/keyCaps/logi_mx_mechanical_keycap_275u_rightshift_x1.stp"
+                }
+            },
+            "children": [
+                {
+                    "primary": "𝕚ℤ𝕖𝔻"
+                },
+                {
+                    "primary": "ACC"
+                }
+            ]
         },
         {
-            "primary": "X"
+            "recipe": {
+                "cap": {
+                    "capShellFile": "./assets/keyCaps/mxMechanicalKey.step",
+                    "keyCapThickness": 2.5
+                }
+            },
+            "children": [
+                {
+                    "children": [
+                        {
+                            "primary": "e"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "§"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "i"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "b"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "i"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "l"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "i"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "t"
+                        }
+                    ]
+                },
+                {
+                    "children": [
+                        {
+                            "primary": "y"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

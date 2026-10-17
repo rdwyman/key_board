@@ -25,7 +25,7 @@ parser.add_argument(
     "-x",
     "--build-plate-x",
     help="Allowed width of a row of keys - should be less than the intended printer's build plate width",
-    default=150,
+    default=160,
     type=float,
 )
 cliArgs = parser.parse_args()
@@ -161,7 +161,7 @@ nubs: list[bd.Solid] = []
 x = 0
 y = 0
 maxY = 0
-spacing = 2
+spacing = 3
 
 for key in keys:
 
