@@ -18,6 +18,34 @@
         {
             "recipe": {
                 "cap": {
+                    "capSolidFile": "./assets/keyCaps/coin.step"
+                },
+                "stems": [
+                    {
+                        "center": [
+                            0,
+                            0
+                        ],
+                        "verticalSlotLength": 4.1,
+                        "verticalSlotWidth": 1.17,
+                        "horizontalSlotLength": 4.1,
+                        "horizontalSlotWidth": 1.17,
+                        "slotDepth": 6,
+                        "slotFillet": 0.3,
+                        "stemHeight": 4.0,
+                        "stemDiameter": 6.0
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "cap": {
                     "capShellFile": "./assets/keyCaps/mxMechanicalKey.step",
                     "keyCapThickness": 2.5
                 },
@@ -78,28 +106,6 @@
                 },
                 {
                     "recipe": {
-                        "markings": [
-                            {
-                                "datum": "glyph",
-                                "center": [
-                                    -0,
-                                    0
-                                ],
-                                "fontSize": 6,
-                                "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
-                            }
-                        ]
-                    },
-                    "children": [
-                        {
-                            "glyph": "t"
-                        }
-                    ]
-                },
-                {
-                    "recipe": {
                         "braille": {
                             "bindings": {
                                 "letter": "primary"
@@ -129,10 +135,10 @@
                             {
                                 "datum": "letter",
                                 "center": [
-                                    0.3,
+                                    0.0,
                                     0.3
                                 ],
-                                "fontSize": 7,
+                                "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
@@ -141,9 +147,9 @@
                                 "datum": "glyph",
                                 "center": [
                                     -0.3,
-                                    -0.3
+                                    0.0
                                 ],
-                                "fontSize": 7,
+                                "fontSize": 5,
                                 "fontFile": "./demos/fonts/NotoSansEgyptianHieroglyphs.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0

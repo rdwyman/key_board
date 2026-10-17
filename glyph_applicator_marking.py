@@ -39,7 +39,7 @@ def make_marking(
                 align=bd.Align.CENTER,
             ).translate((center[0] * bb.size.X / 2, center[1] * bb.size.Y / 2, 0))
 
-        textObj = [bd.Solid.extrude(f, (0, 0, 999)) for f in label.faces()]
+        textObj = [bd.Solid.extrude(f, (0, 0, 50)) for f in label.faces()]
 
         textObj = bd.Compound(textObj).intersect(keyCap)
         return bd.Compound(textObj)
