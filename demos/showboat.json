@@ -7,7 +7,7 @@
                     0.0,
                     0.0
                 ],
-                "fontSize": 12,
+                "fontSize": 11,
                 "fontFile": "./demos/fonts/Roboto.ttf",
                 "recess": 1.0,
                 "extrussion": 0.0
@@ -51,7 +51,7 @@
                                     -0.3,
                                     0.5
                                 ],
-                                "fontSize": 12,
+                                "fontSize": 9,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
@@ -62,7 +62,7 @@
                                     0.3,
                                     -0.5
                                 ],
-                                "fontSize": 12,
+                                "fontSize": 9,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
@@ -85,7 +85,7 @@
                                     -0,
                                     0
                                 ],
-                                "fontSize": 3,
+                                "fontSize": 6,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0

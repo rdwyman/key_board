@@ -4,7 +4,7 @@ import build123d as bd
 
 class CapArgs(TypedDict):
     capShellFile: str
-    capSolidFIle: str
+    capSolidFile: str
     keyCapThickness: float
 
 
