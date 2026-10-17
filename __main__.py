@@ -158,33 +158,47 @@ markings: list[bd.Solid] = []
 braille: list[bd.Solid] = []
 nubs: list[bd.Solid] = []
 
-x = 0
-y = 0
+prevXedge = 0
+yy = 0
 maxY = 0
 spacing = 3
 
 for key in keys:
 
-    s = key.keyCap.bounding_box().size
+    keyBb = key.keyCap.bounding_box()
+    curCenterVec = key.keyCap.center()
+    keyWidth = keyBb.size.X
+    keyHeight = keyBb.size.Y
 
-    x = x + s.X + spacing
-    maxY = max(s.Y + spacing, maxY)
+    newCenterVec = bd.Vector(prevXedge + spacing + keyWidth / 2, -yy, 0) + curCenterVec
 
-    if x > cliArgs.build_plate_x:
-        x = 0
-        y = y + maxY
+    curToNewVec = newCenterVec - curCenterVec
+
+    prevXedge = prevXedge + keyWidth + 2 * spacing
+
+    maxY = max(keyHeight + 2 * spacing, maxY)
+
+    if prevXedge > cliArgs.build_plate_x:
+        prevXedge = 0
+        yy = yy + maxY
         maxY = 0
 
-    primary.extend(key.keyCap.translate((x, y, 0.0)).solids())
+    print("----------------------------")
+    print(key.keyCap.center())
+    print(key.keyCap.bounding_box())
+    print(key.keyCap.bounding_box().size)
+
+    primary.extend(key.keyCap.translate(curToNewVec).solids())
     if key.stems:
         for stem in key.stems:
-            primary.extend(stem.translate((x, y, 0.0)).solids())
+            primary.extend(stem.translate(curToNewVec).solids())
     if key.markings:
-        markings.extend(key.markings.translate((x, y, 0.0)).solids())
+        markings.extend(key.markings.translate(curToNewVec).solids())
     if key.braille:
-        braille.extend(key.braille.translate((x, y, 0.0)).solids())
+        braille.extend(key.braille.translate(curToNewVec).solids())
     if key.nub:
-        nubs.extend(key.nub.translate((x, y, 0.0)).solids())
+        nubs.extend(key.nub.translate(curToNewVec).solids())
+
 
 primaryCompond = bd.Compound(primary, label="primary")
 markingsCompond = bd.Compound(markings, label="markings")

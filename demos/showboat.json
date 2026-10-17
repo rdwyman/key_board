@@ -49,7 +49,7 @@
                                 "datum": "upperLeft",
                                 "center": [
                                     -0.3,
-                                    0.5
+                                    0.4
                                 ],
                                 "fontSize": 9,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
@@ -60,7 +60,7 @@
                                 "datum": "lowerRight",
                                 "center": [
                                     0.3,
-                                    -0.5
+                                    -0.4
                                 ],
                                 "fontSize": 9,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
@@ -86,7 +86,7 @@
                                     0
                                 ],
                                 "fontSize": 6,
-                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
                             }
@@ -124,9 +124,36 @@
                     ]
                 },
                 {
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "letter",
+                                "center": [
+                                    0.3,
+                                    0.3
+                                ],
+                                "fontSize": 7,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "glyph",
+                                "center": [
+                                    -0.3,
+                                    -0.3
+                                ],
+                                "fontSize": 7,
+                                "fontFile": "./demos/fonts/NotoSansEgyptianHieroglyphs.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
                     "children": [
                         {
-                            "primary": "|\\/|"
+                            "letter": "M",
+                            "glyph": "𓀎"
                         }
                     ]
                 }
@@ -153,7 +180,7 @@
                     "primary": "𝕚ℤ𝕖𝔻"
                 },
                 {
-                    "primary": "ACC"
+                    "primary": "CCE"
                 }
             ]
         },
@@ -166,11 +193,34 @@
             },
             "children": [
                 {
-                    "children": [
-                        {
-                            "primary": "e"
-                        }
-                    ]
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "letter",
+                                "center": [
+                                    0.3,
+                                    0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "phoneticGlyph",
+                                "center": [
+                                    0.3,
+                                    0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
+                    "letter": "A",
+                    "phoneticGlyph": "🍎"
                 },
                 {
                     "children": [
@@ -187,23 +237,108 @@
                     ]
                 },
                 {
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "letter",
+                                "center": [
+                                    0.3,
+                                    0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/NotoMusic.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
                     "children": [
                         {
-                            "primary": "b"
+                            "primary": "♭"
                         }
                     ]
                 },
                 {
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "a",
+                                "center": [
+                                    0.3,
+                                    0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "b",
+                                "center": [
+                                    -0.3,
+                                    0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "c",
+                                "center": [
+                                    0.3,
+                                    -0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            },
+                            {
+                                "datum": "d",
+                                "center": [
+                                    -0.3,
+                                    -0.3
+                                ],
+                                "fontSize": 8,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 1.0,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
                     "children": [
                         {
-                            "primary": "i"
+                            "primary": "i",
+                            "a": "ì",
+                            "b": "î",
+                            "c": "ï",
+                            "d": "į"
                         }
                     ]
                 },
                 {
+                    "recipe": {
+                        "braille": {
+                            "bindings": {
+                                "letter": "primary"
+                            },
+                            "center": [
+                                0,
+                                0
+                            ],
+                            "dotDiameter": 1.44,
+                            "dotHeight": 0.48,
+                            "dotHorizontalSpacing": 2.34,
+                            "dotVerticalSpacing": 2.34,
+                            "encoding": {
+                                "⠧": "111001"
+                            }
+                        }
+                    },
                     "children": [
                         {
-                            "primary": "l"
+                            "primary": "⠧"
                         }
                     ]
                 },
@@ -222,9 +357,20 @@
                     ]
                 },
                 {
+                    "recipe": {
+                        "datum": "fancy",
+                        "center": [
+                            0.0,
+                            0.0
+                        ],
+                        "fontSize": 4,
+                        "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
+                        "recess": 1.0,
+                        "extrussion": 0.0
+                    },
                     "children": [
                         {
-                            "primary": "y"
+                            "fancy": "y"
                         }
                     ]
                 }
