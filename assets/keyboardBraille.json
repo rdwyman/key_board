@@ -1,0 +1,6 @@
+{
+    "overlays": [
+        "./assets/keyboard.json",
+        "./assets/overlays/applicatorBrailleStd.json"
+    ]
+}

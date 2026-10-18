@@ -1,6 +1,6 @@
 {
     "overlays": [
-        "./demos/overlays/applicatorBrailleStd.json"
+        "./assets/overlays/applicatorBrailleStd.json"
     ],
     "recipe": {
         "braille": {

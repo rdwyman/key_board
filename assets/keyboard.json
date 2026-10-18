@@ -1,0 +1,10 @@
+{
+    "overlays": [
+        "./assets/overlays/applicatorCapMxMechanicalWStem.json",
+        "./assets/overlays/applicatorMarkingShift.json",
+        "./assets/overlays/applicatorMarkingStd.json",
+        "./assets/overlays/keysLettersEnglish.json",
+        "./assets/overlays/keysSymbols.json",
+        "./assets/overlays/keysNumbers.json"
+    ]
+}

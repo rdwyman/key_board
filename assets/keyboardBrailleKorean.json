@@ -1,0 +1,14 @@
+{
+    "overlays": [
+        "./assets/overlays/applicatorMarkingShift.json",
+        "./assets/overlays/applicatorMarkingStd.json",
+        "./assets/overlays/applicatorNub.json",
+        "./assets/overlays/keysLettersKorean.json",
+        "./assets/overlays/applicatorBrailleKorean.json"
+    ],
+    "recipe": {
+        "cap": {
+            "capSolidFile": "./assets/keyCaps/logi_mx_mechanical_keycap_1u_standard_x89.stp"
+        }
+    }
+}

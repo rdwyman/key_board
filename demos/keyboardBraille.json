@@ -1,6 +1,0 @@
-{
-    "overlays": [
-        "./demos/keyboard.json",
-        "./demos/overlays/applicatorBrailleStd.json"
-    ]
-}

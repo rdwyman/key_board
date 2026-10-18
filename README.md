@@ -7,7 +7,7 @@ _There are as many unique accessibility needs as there are individulas with acce
 Here are some ideas on how to adapt this to your (or a loved ones) specific needs. These are just to get you started, your imaginiation is the only limit! Upload your make or remix so others can adapat it and our accessibility reach can grow!
 
 Accessibility:
-* Multi lingual accessibility - Accessibility is needed the world over - add braille support for another language. see the Korean Braille keyboard in `./demos/` for a proof of concept implementation!
+* Multi lingual accessibility - Accessibility is needed the world over - add braille support for another language. see the Korean Braille keyboard in `./assets/` for a proof of concept implementation!
 * Make a phonetic keyboard - "A" is for "Apple" - Help those still learning letter sounds, great for kids too! Use multiple "markings" applicators - one for the letter and one for the glyph.
 * Customize it - Make Braille dots larger, use your favorite accessiblity focused font, and more. Ones accessibility needs are unique, their keyboard should be too.
 * Use an accessible keycap - add a stick typer friendly keycap with a depression in the middle so the stick doesn't slip when typing - see the [stick keycap](./assets/keyCaps/stickTypingKeyCap.step) for an example implementation
@@ -20,6 +20,34 @@ Just for fun / other:
 * Print markings in glow-in-the-dark filament
 
 ## How to run the keycap generator software
+
+Quick start for those familar with python. See next section if unfamiliar.
+* set up a venv
+* install from requirements.txt
+* run from command line or an IDE
+
+### Instructions for Python noobs
+
+Using the command line (recommended only if you just want to run the software)
+* Install the most recent version of [Python](https://www.python.org/downloads/) - v3.12.3 is known to work
+* Download and unzip the source code to a folder on your computer ([direct ZIP download](https://github.com/rdwyman/key_board/archive/refs/heads/master.zip))
+* Open a terminal of your choice. I recommend PowerShell on Windows (will be pre-installed) or bash on Linux, though any terminal will likely work
+* Use the [`cd` command](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cd) to navigate your terminal to where the code was unzipped. ex for Windows: `cd C:\Users\myUserName\Documents\path\to\key_board`
+* Run the command `python -m venv .venv` to create a virtual environemtn (see [here](https://www.xanthium.in/configuring-python-virtual-environment-venv-tutorial-on-windows-linux-os) for details)
+* Activate your environment
+  * Windows: `.\.venv\Scripts\activate`
+  * Linux: `source .venv/bin/activate`
+* Install dependencies - `pip install -r requirments.txt`
+* Run the software - `python __main__.py ./assets/keyboard.json`. You can point the software at any JSON configuration file you wish. There are some other examples in the `./assets/` folder. See the recipes section for how to mofidy the config file.
+* The sofware will generate a `./result.step` file that can be loaded into PrusaSlicer
+
+Using Visual Studio Code (recommended for those who want to run and/or modify the software)
+* Install [Visual Studio Code](https://code.visualstudio.com/)
+* Install the most recent version of [Python](https://www.python.org/downloads/) - v3.12.3 is known to work
+* Download and unzip the source code to a folder on your computer ([direct ZIP download](https://github.com/rdwyman/key_board/archive/refs/heads/master.zip))
+* Open this folder in Visual Studio Code - see [here](https://code.visualstudio.com/docs/editing/getting-started/editor-tutorial#_open-a-folder-in-vs-code) for help
+* Press F5 to run the software - follow any instructions needed to configure your environment
+* You can modify the `.vscode/launch.json` file to change run configurations
 
 ### Configuration Files
 The software uses JSON to specify the keycaps to be made. It organizes the key caps in a tree stucture with a each node potentially contributing a partial or full recipe for how a key cap should be generated. Recipes are merged on top of more basal recipes to compute an effective recipe for the node. This allows a base recipe to be inherited by lower levels. Each node may optionally include an array of children which are in and of themselves nodes. Leaf nodes are actualized into a key cap. Non-leaf nodes are only storage. They do not represent key caps. Nodes may also include an optional overlays parameter. This is an array of file paths to other configuration files that are mergedd on top of the the node at that level. **All** file paths are resolved relative to the folder the program is ran from. The examples are formulated on the assumption the generator is invoked from the root folder of this repository (within the foloder containing [__main__.py](./__main__.py)).

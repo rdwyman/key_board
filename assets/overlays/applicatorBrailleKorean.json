@@ -1,6 +1,6 @@
 {
     "overlays": [
-        "./demos/overlays/encodingBrailleKorean.json"
+        "./assets/overlays/encodingBrailleKorean.json"
     ],
     "recipe": {
         "braille": {
