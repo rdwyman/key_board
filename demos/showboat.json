@@ -1,5 +1,15 @@
 {
+    "overlays": [
+        "./demos/overlays/encodingBrailleEnglish.json",
+        "./demos/overlays/encodingBrailleKorean.json"
+    ],
     "recipe": {
+        "braille": {
+            "dotDiameter": 1.44,
+            "dotHeight": 0.48,
+            "dotHorizontalSpacing": 2.34,
+            "dotVerticalSpacing": 2.34
+        },
         "markings": [
             {
                 "datum": "primary",
@@ -46,6 +56,11 @@
                 },
                 {
                     "recipe": {
+                        "braille": {
+                            "bindings": {
+                                "letter": "primary"
+                            }
+                        },
                         "markings": [
                             {
                                 "datum": "fancy",
@@ -63,6 +78,9 @@
                     "children": [
                         {
                             "fancy": "Y"
+                        },
+                        {
+                            "primary": "s"
                         }
                     ]
                 }
@@ -105,7 +123,7 @@
                                     0.3
                                 ],
                                 "fontSize": 7,
-                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 0.3,
                                 "extrussion": 0.8
                             },
@@ -116,7 +134,7 @@
                                     -0.3
                                 ],
                                 "fontSize": 7,
-                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 0.3,
                                 "extrussion": 0.2
                             }
@@ -124,7 +142,7 @@
                     },
                     "children": [
                         {
-                            "upperLeft": "∪",
+                            "upperLeft": "u",
                             "lowerRight": "s"
                         }
                     ]
@@ -134,17 +152,6 @@
                         "braille": {
                             "bindings": {
                                 "letter": "primary"
-                            },
-                            "center": [
-                                0,
-                                0
-                            ],
-                            "dotDiameter": 1.44,
-                            "dotHeight": 0.48,
-                            "dotHorizontalSpacing": 2.34,
-                            "dotVerticalSpacing": 2.34,
-                            "encoding": {
-                                "ㅎ": "010110"
                             }
                         }
                     },
@@ -201,7 +208,18 @@
                     "primary": "𝕚ℤ𝕖𝔻"
                 },
                 {
-                    "primary": "ACCE"
+                    "recipe": {
+                        "braille": {
+                            "bindings": {
+                                "letter": "primary"
+                            }
+                        }
+                    },
+                    "children": [
+                        {
+                            "primary": "ACCE"
+                        }
+                    ]
                 }
             ]
         },
@@ -214,11 +232,7 @@
             },
             "children": [
                 {
-                    "children": [
-                        {
-                            "primary": "§"
-                        }
-                    ]
+                    "primary": "s"
                 },
                 {
                     "recipe": {
@@ -281,7 +295,7 @@
                             {
                                 "datum": "d",
                                 "center": [
-                                    0.4,
+                                    -0.4,
                                     -0.4
                                 ],
                                 "fontSize": 6,
@@ -297,7 +311,28 @@
                             "a": "ï",
                             "b": "î",
                             "c": "ĩ",
-                            "d": "𝔦"
+                            "d": "👁"
+                        }
+                    ]
+                },
+                {
+                    "recipe": {
+                        "braille": {
+                            "bindings": {
+                                "letter": "primary"
+                            },
+                            "dotDiameter": 1.0,
+                            "dotHeight": 0.48,
+                            "dotHorizontalSpacing": 1.9,
+                            "dotVerticalSpacing": 1.9,
+                            "encoding": {
+                                "⠧": "111001"
+                            }
+                        }
+                    },
+                    "children": [
+                        {
+                            "primary": "⠧"
                         }
                     ]
                 },
@@ -311,22 +346,12 @@
                                 0,
                                 0
                             ],
-                            "dotDiameter": 1.44,
+                            "dotDiameter": 1.0,
                             "dotHeight": 0.48,
-                            "dotHorizontalSpacing": 2.34,
-                            "dotVerticalSpacing": 2.34,
-                            "encoding": {
-                                "⠧": "111001"
-                            }
+                            "dotHorizontalSpacing": 1.9,
+                            "dotVerticalSpacing": 1.9
                         }
                     },
-                    "children": [
-                        {
-                            "primary": "⠧"
-                        }
-                    ]
-                },
-                {
                     "children": [
                         {
                             "primary": "i"
@@ -339,15 +364,12 @@
                             "dotDiameter": 2,
                             "dotHeight": 4,
                             "dotHorizontalSpacing": 4,
-                            "dotVerticalSpacing": 4,
-                            "encoding": {
-                                "t": "011110"
-                            }
+                            "dotVerticalSpacing": 4
                         }
                     },
                     "children": [
                         {
-                            "primary": "t"
+                            "primary": "T"
                         }
                     ]
                 }

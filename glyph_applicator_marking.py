@@ -20,7 +20,10 @@ def make_marking(
     center = args.get("center")
     fontFile = args.get("fontFile")
     recess = args.get("recess", 0)
-    extrussion = args.get("extrusion", 0)
+    extrussion = args.get("extrussion", 0)
+
+    # always extrude a hair to ensure correct boolean operations
+    extrussion = extrussion + 0.005
 
     if datum in data:
 

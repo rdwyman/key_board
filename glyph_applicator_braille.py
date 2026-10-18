@@ -38,6 +38,10 @@ def make_cell(key_cap: bd.Compound, data: dict, args: BrailleArgs) -> bd.Compoun
     dot_objs = []
 
     for letter in data.values():
+
+        if letter not in encoding:
+            continue
+
         dotString = encoding[letter]
 
         z_sink = 0.0
