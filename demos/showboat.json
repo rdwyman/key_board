@@ -89,6 +89,37 @@
         {
             "recipe": {
                 "cap": {
+                    "capSolidFile": "./assets/keyCaps/stickTypingKeyCap.step"
+                },
+                "stems": [
+                    {
+                        "center": [
+                            0,
+                            0
+                        ],
+                        "verticalSlotLength": 4.1,
+                        "verticalSlotWidth": 1.17,
+                        "horizontalSlotLength": 4.1,
+                        "horizontalSlotWidth": 1.17,
+                        "slotDepth": 6,
+                        "slotFillet": 0.3,
+                        "stemHeight": 4.0,
+                        "stemDiameter": 6.0
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "primary": "E"
+                },
+                {
+                    "primary": "i"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "cap": {
                     "capShellFile": "./assets/keyCaps/mxMechanicalKey.step",
                     "keyCapThickness": 2.5
                 },
@@ -217,7 +248,7 @@
                     },
                     "children": [
                         {
-                            "primary": "ACCE"
+                            "primary": "ACC"
                         }
                     ]
                 }
@@ -311,7 +342,7 @@
                             "a": "ï",
                             "b": "î",
                             "c": "ĩ",
-                            "d": "👁"
+                            "d": "I"
                         }
                     ]
                 },

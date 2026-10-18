@@ -10,7 +10,8 @@ Accessibility:
 * Multi lingual accessibility - Accessibility is needed the world over - add braille support for another language. see the Korean Braille keyboard in `./demos/` for a proof of concept implementation!
 * Make a phonetic keyboard - "A" is for "Apple" - Help those still learning letter sounds, great for kids too! Use multiple "markings" applicators - one for the letter and one for the glyph.
 * Customize it - Make Braille dots larger, use your favorite accessiblity focused font, and more. Ones accessibility needs are unique, their keyboard should be too.
-* Use an accessible keycap - add a keycap with a depression so stick typers stick's don't slip when typing or make some keycaps larger and others smaller based on particular needs.
+* Use an accessible keycap - add a stick typer friendly keycap with a depression in the middle so the stick doesn't slip when typing - see the [stick keycap](./assets/keyCaps/stickTypingKeyCap.step) for an example implementation
+* Make some keycaps larger and others smaller based on particular accessibility or preference needs.
 
 Just for fun / other:
 * Change the stem dimensions - If keys pop off, make the slot width tighter, change the stem height for each row of keys to be "just right", add your own stem applicator to support different physical keyboard mounts 

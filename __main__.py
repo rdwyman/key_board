@@ -173,7 +173,14 @@ for key in keys:
 
     newCenterVec = bd.Vector(prevXedge + spacing + keyWidth / 2, -yy, 0) + curCenterVec
 
-    curToNewVec = newCenterVec - curCenterVec
+    if key.stems:
+        down = min(keyBb.min.Z, key.stems.bounding_box().min.Z)
+    else:
+        down = keyBb.min.Z
+
+    newLowerVec = (0, 0, down)
+
+    curToNewVec = newCenterVec - curCenterVec - newLowerVec
 
     prevXedge = prevXedge + keyWidth + 2 * spacing
 
