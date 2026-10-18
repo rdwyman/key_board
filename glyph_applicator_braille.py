@@ -16,7 +16,7 @@ D8 = 1 << 7
 
 class BrailleArgs(TypedDict):
     datum: str
-    encoding: NotRequired[str]
+    encoding: dict
     center: NotRequired[tuple[float, float]]
     dotDiameter: NotRequired[float]
     dotHeight: NotRequired[float]
@@ -24,9 +24,8 @@ class BrailleArgs(TypedDict):
     dotVerticalSpacing: NotRequired[float]
 
 
-def make_cell(key_cap: bd.Compound, data, args: BrailleArgs) -> bd.Compound:
+def make_cell(key_cap: bd.Compound, data: dict, args: BrailleArgs) -> bd.Compound:
 
-    datum = args.get("datum")
     encoding = args.get("encoding", "./encoding.json")
     center = args.get("center", (0, 0))
 
@@ -36,58 +35,63 @@ def make_cell(key_cap: bd.Compound, data, args: BrailleArgs) -> bd.Compound:
     dotHorizontalSpacing = args.get("dotHorizontalSpacing", 2.34)
     dotVerticalSpacing = args.get("dotVerticalSpacing", 2.34)
 
-    # TODO: Use data, datum and encoding to determine the dots to use
-    brailleCode = D1 | D2 | D4 | D6
-
-    z_sink = 0.0
-    is_8_dot = False
     dot_objs = []
 
-    def add_dot(x_translate: float, y_translate: float):
+    for letter in data.values():
+        dotString = encoding[letter]
 
-        if is_8_dot:
-            y_translate = y_translate + 0.5
+        z_sink = 0.0
+        is_8_dot = False
 
-        x = dotHorizontalSpacing * x_translate + center[0]
-        y = dotVerticalSpacing * y_translate + center[1]
+        def add_dot(x_translate: float, y_translate: float):
 
-        ray = bd.Axis((x, y, 99), (0, 0, -1))
+            if is_8_dot:
+                y_translate = y_translate + 0.5
 
-        res = key_cap.intersect(ray)
-        if not res:
-            return
+            x = dotHorizontalSpacing * x_translate + center[0]
+            y = dotVerticalSpacing * y_translate + center[1]
 
-        z = res.vertices().sort_by(bd.Axis.Z).last.Z - z_sink
+            ray = bd.Axis((x, y, 99), (0, 0, -1))
 
-        radius = dotDiameter / 2
-        hgt = dotHeight + z_sink
-        scale = hgt / radius
+            res = key_cap.intersect(ray)
+            if not res:
+                return
 
-        dot = bd.Sphere(radius=radius / 2)
-        dot = dot.scale((1, 1, scale))
+            z = res.vertices().sort_by(bd.Axis.Z).last.Z - z_sink
 
-        dot.color = bd.Color("blue")
+            radius = dotDiameter / 2
+            hgt = dotHeight + z_sink
+            scale = hgt / radius
 
-        dot_objs.append(dot.translate((x, y, z)))
+            dot = bd.Sphere(radius=radius / 2)
+            dot = dot.scale((1, 1, scale))
 
-    mod_8_dot = 0.5 if is_8_dot else 0
+            dot.color = bd.Color("blue")
 
-    dots = []
-    if brailleCode & D1:
-        add_dot(-0.5, 1.0 + mod_8_dot)
-    if brailleCode & D2:
-        add_dot(+0.5, 1.0 + mod_8_dot)
-    if brailleCode & D3:
-        add_dot(-0.5, 0.0 + mod_8_dot)
-    if brailleCode & D4:
-        add_dot(+0.5, 0.0 + mod_8_dot)
-    if brailleCode & D5:
-        add_dot(-0.5, -1.0 + mod_8_dot)
-    if brailleCode & D6:
-        add_dot(+0.5, -1.0 + mod_8_dot)
-    if brailleCode & D7:
-        add_dot(-0.5, -2.0 + mod_8_dot)
-    if brailleCode & D8:
-        add_dot(+0.5, -2.0 + mod_8_dot)
+            dot_objs.append(dot.translate((x, y, z)))
+
+        mod_8_dot = 0.5 if is_8_dot else 0
+
+        dots = []
+        if dotString[0] == "1":
+            add_dot(-0.5, 1.0 + mod_8_dot)
+        if dotString[1] == "1":
+            add_dot(-0.5, 0.0 + mod_8_dot)
+        if dotString[2] == "1":
+            add_dot(-0.5, -1.0 + mod_8_dot)
+        if dotString[3] == "1":
+            add_dot(+0.5, 1.0 + mod_8_dot)
+        if dotString[4] == "1":
+            add_dot(+0.5, 0.0 + mod_8_dot)
+        if dotString[5] == "1":
+            add_dot(+0.5, -1.0 + mod_8_dot)
+
+        # TODO: Fix and reincorporate
+        """        if is_8_dot:
+            if dotString[6] == "1":
+                add_dot(-0.5, -2.0 + mod_8_dot)
+            if dotString[7] == "1":
+                add_dot(+0.5, -1.0 + mod_8_dot)
+        """
 
     return bd.Compound(dot_objs)

@@ -183,11 +183,6 @@ for key in keys:
         yy = yy + maxY
         maxY = 0
 
-    print("----------------------------")
-    print(key.keyCap.center())
-    print(key.keyCap.bounding_box())
-    print(key.keyCap.bounding_box().size)
-
     primary.extend(key.keyCap.translate(curToNewVec).solids())
     if key.stems:
         for stem in key.stems:

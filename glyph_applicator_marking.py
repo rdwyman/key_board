@@ -41,7 +41,8 @@ def make_marking(
 
         textObj = [bd.Solid.extrude(f, (0, 0, 50)) for f in label.faces()]
 
-        textObj = bd.Compound(textObj).intersect(keyCap)
+        textObj = bd.Compound(textObj).intersect(keyCap, tolerance=0.1)
+
         return bd.Compound(textObj)
 
     else:
