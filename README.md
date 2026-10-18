@@ -94,3 +94,4 @@ There are some improvements in organization that I didn't get around to. I would
 * The code does very little error checking. If you feed it garbage, you will get garbage squared out. It is your responsiblity to invoke it with reasonable inputs.
 * This implementation is very inefficient. Data is re-read from disk for each key. It should be cached. There are many such improvements that can be made. In practice, I've found generation of even full keyboard sets to only take a minute or two.
 * The STEP file emitted by this software can be very large. When importing to Prusa slicer, you may need to either turn down the mesh resolution or emit fewer keys per STEP file.
+* Custom font files are not as reliable as I wish they were. They will be hit or miss from letter to font.

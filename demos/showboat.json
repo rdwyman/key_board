@@ -40,6 +40,9 @@
             "children": [
                 {
                     "primary": "t"
+                },
+                {
+                    "primary": "i"
                 }
             ]
         },
@@ -79,8 +82,8 @@
                                     -0.3,
                                     0.3
                                 ],
-                                "fontSize": 12,
-                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "fontSize": 7,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
                             },
@@ -90,8 +93,8 @@
                                     0.3,
                                     -0.3
                                 ],
-                                "fontSize": 12,
-                                "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
+                                "fontSize": 7,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
                             }
@@ -99,10 +102,8 @@
                     },
                     "children": [
                         {
-                            "upperLeft": "u"
-                        },
-                        {
-                            "upperLeft": "s"
+                            "upperLeft": "∪",
+                            "lowerRight": "s"
                         }
                     ]
                 },
@@ -193,14 +194,10 @@
                 {
                     "children": [
                         {
-                            "primary": "sS"
-                        }
-                    ]
-                },
-                {
-                    "children": [
+                            "primary": "S"
+                        },
                         {
-                            "primary": "i"
+                            "primary": "ꞩ"
                         }
                     ]
                 },
@@ -331,8 +328,8 @@
                                     0.0,
                                     0.0
                                 ],
-                                "fontSize": 9,
-                                "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
+                                "fontSize": 6,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 1.0,
                                 "extrussion": 0.0
                             }
