@@ -20,7 +20,7 @@
                 "fontSize": 11,
                 "fontFile": "./demos/fonts/Roboto.ttf",
                 "recess": 0.3,
-                "extrussion": 0.0
+                "extrusion": 0.0
             }
         ]
     },
@@ -71,7 +71,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.0
+                                "extrusion": 0.0
                             }
                         ]
                     },
@@ -125,7 +125,7 @@
                                 "fontSize": 7,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.8
+                                "extrusion": 0.8
                             },
                             {
                                 "datum": "lowerRight",
@@ -136,7 +136,7 @@
                                 "fontSize": 7,
                                 "fontFile": "./demos/fonts/UnifrakturMaguntia.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.2
+                                "extrusion": 0.2
                             }
                         ]
                     },
@@ -173,7 +173,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.2
+                                "extrusion": 0.2
                             },
                             {
                                 "datum": "glyph",
@@ -184,7 +184,7 @@
                                 "fontSize": 8,
                                 "fontFile": "./demos/fonts/NotoSansEgyptianHieroglyphs.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.0
+                                "extrusion": 0.0
                             }
                         ]
                     },
@@ -246,7 +246,7 @@
                                 "fontSize": 8,
                                 "fontFile": "./demos/fonts/NotoMusic.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.0
+                                "extrusion": 0.0
                             }
                         ]
                     },
@@ -268,7 +268,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.0
+                                "extrusion": 0.0
                             },
                             {
                                 "datum": "b",
@@ -279,7 +279,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.2
+                                "extrusion": 0.2
                             },
                             {
                                 "datum": "c",
@@ -290,7 +290,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.8
+                                "extrusion": 0.8
                             },
                             {
                                 "datum": "d",
@@ -301,7 +301,7 @@
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
                                 "recess": 0.3,
-                                "extrussion": 0.8
+                                "extrusion": 0.8
                             }
                         ]
                     },

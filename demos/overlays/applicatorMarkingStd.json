@@ -10,7 +10,7 @@
                 "fontSize": 14,
                 "fontFile": "./demos/fonts/Roboto.ttf",
                 "recess": 0.3,
-                "extrussion": 0.0
+                "extrusion": 0.0
             }
         ]
     }

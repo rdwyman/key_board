@@ -20,10 +20,10 @@ def make_marking(
     center = args.get("center")
     fontFile = args.get("fontFile")
     recess = args.get("recess", 0)
-    extrussion = args.get("extrussion", 0)
+    extrusion = args.get("extrusion", 0)
 
     # always extrude a hair to ensure correct boolean operations
-    extrussion = extrussion + 0.005
+    extrusion = extrusion + 0.005
 
     if datum in data:
 
@@ -46,7 +46,7 @@ def make_marking(
 
         textObj = bd.Compound(bd.Compound(textObj).intersect(keyCap))
 
-        textObj = textObj.translate((0, 0, extrussion + recess))
+        textObj = textObj.translate((0, 0, extrusion + recess))
 
         return textObj
 
