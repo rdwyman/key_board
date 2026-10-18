@@ -9,7 +9,7 @@
                 ],
                 "fontSize": 14,
                 "fontFile": "./demos/fonts/Roboto.ttf",
-                "recess": 1.0,
+                "recess": 0.3,
                 "extrussion": 0.0
             }
         ]

@@ -19,8 +19,8 @@ def make_marking(
     fontSize = args.get("fontSize")
     center = args.get("center")
     fontFile = args.get("fontFile")
-    recess = args.get("recess")
-    extrussion = args.get("extrusion")
+    recess = args.get("recess", 0)
+    extrussion = args.get("extrusion", 0)
 
     if datum in data:
 
@@ -41,9 +41,11 @@ def make_marking(
 
         textObj = [bd.Solid.extrude(f, (0, 0, 50)) for f in label.faces()]
 
-        textObj = bd.Compound(textObj).intersect(keyCap, tolerance=0.1)
+        textObj = bd.Compound(bd.Compound(textObj).intersect(keyCap))
 
-        return bd.Compound(textObj)
+        textObj = textObj.translate((0, 0, extrussion + recess))
+
+        return textObj
 
     else:
         return None

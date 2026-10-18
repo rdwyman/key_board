@@ -113,8 +113,10 @@ def actualize(data, recipe: Recipe):
             m = glyph_applicator_marking.make_marking(key.keyCap, data, marking)
             if m:
                 markingSolids.extend(m)
-                key.keyCap = key.keyCap - m
-        key.markings = bd.Compound(markingSolids)
+                key.markings = bd.Compound(markingSolids).translate(
+                    (0, 0, marking.get("recess", 0))
+                )
+                key.keyCap = key.keyCap - key.markings
     else:
         key.markings = None
 

@@ -9,7 +9,7 @@
                 ],
                 "fontSize": 11,
                 "fontFile": "./demos/fonts/Roboto.ttf",
-                "recess": 1.0,
+                "recess": 0.3,
                 "extrussion": 0.0
             }
         ]
@@ -43,6 +43,28 @@
                 },
                 {
                     "primary": "i"
+                },
+                {
+                    "recipe": {
+                        "markings": [
+                            {
+                                "datum": "fancy",
+                                "center": [
+                                    0.0,
+                                    0.0
+                                ],
+                                "fontSize": 6,
+                                "fontFile": "./demos/fonts/MonsieurLaDoulaise.ttf",
+                                "recess": 0.3,
+                                "extrussion": 0.0
+                            }
+                        ]
+                    },
+                    "children": [
+                        {
+                            "fancy": "Y"
+                        }
+                    ]
                 }
             ]
         },
@@ -84,8 +106,8 @@
                                 ],
                                 "fontSize": 7,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
+                                "recess": 0.3,
+                                "extrussion": 0.8
                             },
                             {
                                 "datum": "lowerRight",
@@ -95,8 +117,8 @@
                                 ],
                                 "fontSize": 7,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
+                                "recess": 0.3,
+                                "extrussion": 0.2
                             }
                         ]
                     },
@@ -143,8 +165,8 @@
                                 ],
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
+                                "recess": 0.3,
+                                "extrussion": 0.2
                             },
                             {
                                 "datum": "glyph",
@@ -154,7 +176,7 @@
                                 ],
                                 "fontSize": 8,
                                 "fontFile": "./demos/fonts/NotoSansEgyptianHieroglyphs.ttf",
-                                "recess": 1.0,
+                                "recess": 0.3,
                                 "extrussion": 0.0
                             }
                         ]
@@ -162,7 +184,7 @@
                     "children": [
                         {
                             "letter": "M",
-                            "glyph": "𓁹"
+                            "glyph": "𓀀"
                         }
                     ]
                 }
@@ -194,10 +216,7 @@
                 {
                     "children": [
                         {
-                            "primary": "S"
-                        },
-                        {
-                            "primary": "ꞩ"
+                            "primary": "§"
                         }
                     ]
                 },
@@ -212,7 +231,7 @@
                                 ],
                                 "fontSize": 8,
                                 "fontFile": "./demos/fonts/NotoMusic.ttf",
-                                "recess": 1.0,
+                                "recess": 0.3,
                                 "extrussion": 0.0
                             }
                         ]
@@ -229,43 +248,56 @@
                             {
                                 "datum": "a",
                                 "center": [
-                                    0.0,
+                                    0.4,
                                     0.4
                                 ],
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
+                                "recess": 0.3,
                                 "extrussion": 0.0
                             },
                             {
                                 "datum": "b",
                                 "center": [
-                                    -0.3,
-                                    0.3
+                                    -0.4,
+                                    0.4
                                 ],
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
+                                "recess": 0.3,
+                                "extrussion": 0.2
                             },
                             {
                                 "datum": "c",
                                 "center": [
-                                    0.3,
-                                    -0.3
+                                    0.4,
+                                    -0.4
                                 ],
                                 "fontSize": 6,
                                 "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
+                                "recess": 0.3,
+                                "extrussion": 0.8
+                            },
+                            {
+                                "datum": "d",
+                                "center": [
+                                    0.4,
+                                    -0.4
+                                ],
+                                "fontSize": 6,
+                                "fontFile": "./demos/fonts/Roboto.ttf",
+                                "recess": 0.3,
+                                "extrussion": 0.8
                             }
                         ]
                     },
                     "children": [
                         {
-                            "a": "i",
+                            "primary": "i",
+                            "a": "ï",
                             "b": "î",
-                            "c": "I"
+                            "c": "ĩ",
+                            "d": "𝔦"
                         }
                     ]
                 },
@@ -316,28 +348,6 @@
                     "children": [
                         {
                             "primary": "t"
-                        }
-                    ]
-                },
-                {
-                    "recipe": {
-                        "markings": [
-                            {
-                                "datum": "fancy",
-                                "center": [
-                                    0.0,
-                                    0.0
-                                ],
-                                "fontSize": 6,
-                                "fontFile": "./demos/fonts/Roboto.ttf",
-                                "recess": 1.0,
-                                "extrussion": 0.0
-                            }
-                        ]
-                    },
-                    "children": [
-                        {
-                            "fancy": "Y"
                         }
                     ]
                 }
