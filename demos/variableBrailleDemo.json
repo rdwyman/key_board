@@ -1,0 +1,108 @@
+{
+    "overlays": [
+        "./assets/overlays/applicatorCapMxMechanical.json",
+        "./assets/overlays/applicatorBrailleStd.json",
+        "./assets/overlays/encodingBrailleEnglish.json"
+    ],
+    "children": [
+        {
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotDiameter": 2.0
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotHeight": 1.25
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotHorizontalSpacing": 3.0,
+                    "dotVerticalSpacing": 3.0
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotDiameter": 2.0,
+                    "dotHeight": 2,
+                    "dotHorizontalSpacing": 3,
+                    "dotVerticalSpacing": 1.9
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotDiameter": 1.0,
+                    "dotHeight": 0.48,
+                    "dotHorizontalSpacing": 1.9,
+                    "dotVerticalSpacing": 1.9
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotHeight": 3.5
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        },
+        {
+            "recipe": {
+                "braille": {
+                    "dotHorizontalSpacing": 0.8,
+                    "dotVerticalSpacing": 0.8
+                }
+            },
+            "children": [
+                {
+                    "primary": "t"
+                }
+            ]
+        }
+    ]
+}
