@@ -12,8 +12,7 @@ from typing import NotRequired, TypedDict
 
 parser = argparse.ArgumentParser(
     prog="key_board",
-    description="Parameterized keycaps program",
-    epilog="TODO: Add license?",
+    description="Parameterized keycaps program"
 )
 
 parser.add_argument("schemata", type=str, nargs="+")

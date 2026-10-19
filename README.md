@@ -39,7 +39,7 @@ Using the command line (recommended only if you just want to run the software)
   * Linux: `source .venv/bin/activate`
 * Install dependencies - `pip install -r requirments.txt`
 * Run the software - `python __main__.py ./assets/keyboard.json`. You can point the software at any JSON configuration file you wish. There are some other examples in the `./assets/` folder. See the recipes section for how to mofidy the config file.
-* The sofware will generate a `./result.step` file that can be loaded into PrusaSlicer
+* The sofware will generate a `./result.step` file that can be loaded into PrusaSlicer or another slicing program
 
 Using Visual Studio Code (recommended for those who want to run and/or modify the software)
 * Install [Visual Studio Code](https://code.visualstudio.com/)
@@ -58,7 +58,7 @@ See the configuration files for examples of how the configuration recipes can be
 Recipes are specified by applicators which are small sub recipes specifying a portion of a keycap. Applicators are all optional with the exeption of the cap applicator.
 
 #### Cap Applicator
-The cap appllicator determines what key cap is used. It is specifified in a recipe by the property name "cap" and a JSON value as follows. 
+The cap applicator determines what key cap is used. It is specifified in a recipe by the property name "cap" and a JSON value as follows. 
 ```json
 {
   "capSolidFile": "./path/to/solidKeyCap.step",
@@ -71,28 +71,70 @@ Either a `capSolidFile` or a `capShellFile` must be provided. If a `capShellFile
 This is the only required applicator within a recipe. A leaf node key cap whose resolved recipe does not contain a cap applicator will raise an exception.
 
 #### Braille Applicator
-TODO:
+The braille applicator determines if Braille is shown on the key cap. It is specifified in a recipe by the property name "braille" and a JSON value as follows. The "bindings" key should specify a "letter" key with a value equal to the name of the key of the child data packet that Braille should be generated for. See the demos for examples. The encoding is a mapping from unicode characters to the 6 dot Braille associated with the character. If a child data packet does not contain this key, no braille is generated. The dot diameter, height and spacing are in mm.
+```json
+"braille": {
+    "bindings": {
+      "letter": "primary"
+    },
+    "encoding": {
+      "A": "100000",
+      "B": "110000",
+      "C": "100100",
+      "D": "100110",
+      "E": "100010",
+      "F": "110100"
+    },
+    "dotDiameter": 2.88,
+    "dotHeight": 0.96,
+    "dotHorizontalSpacing": 2.34,
+    "dotVerticalSpacing": 2.34
+}
+```
 
 #### Marking Applicator
-TODO:
-
-#### Nub Applicator
-TODO:
+The markings applicator determines what glyphs are shown on the key. Any unicode character (or string) is theoroetically supported as long as an appropriate font file is provided. It is specifified in a recipe by the property name "markings" and a JSON array of objects as follows. The center is an array of two numbers whose value should be between -1 and 1. These specify the relative location of the glyph on the key cap with 0,0 being the center and 1,1 being the most extreme upper right corner. The "datum" key's value is equal to the name of the key of the child data packet that a glyph should be generated for. If a child data packet does not contain this key, no glyph marking is generated.
+```json
+"markings": [
+    {
+        "datum": "primary",
+        "center": [
+            0.0,
+            0.0
+        ],
+        "fontSize": 11,
+        "fontFile": "./assets/fonts/Roboto.ttf",
+        "recess": 0.1,
+        "extrusion": 0.0
+    }
+]
+```
 
 #### Stem Applicator
-The cap appllicator determines what key cap is used. It is specifified in a recipe by the property name "cap" and a JSON value as follows. 
+The stem applicator determines what stems are used. It is specifified in a recipe by the property name "stems" and a JSON value as follows. Note that this is an array allowing for multiple stems to be specified (though this functionality has not bee tested). The stem uses a cherry profile. See the [standard stem](./assets/overlays/applicatorStemStd.json) for a typical stem dimension, though you will likely want to tweak the slot depth and stem height.
 ```json
-{
-  "capSolidFile": "./path/to/solidKeyCap.step",
-  "capShellFile": "./path/to/shellKeyCap",
-  "keyCapThickness": 2.5
-}
+"stems": [
+    {
+        "center": [
+            0,
+            0
+        ],
+        "verticalSlotLength": 4.1,
+        "verticalSlotWidth": 1.17,
+        "horizontalSlotLength": 4.1,
+        "horizontalSlotWidth": 1.17,
+        "slotDepth": 6,
+        "slotFillet": 0.3,
+        "stemHeight": 4.0,
+        "stemDiameter": 6.0
+    }
+]
 ```
 
 Some of the provided shell key caps are derived from the [Logitech keyboard reference](https://www.printables.com/model/1846004-official-mx-keyboard-cad-templates/files). They do not contain stems - appropriate stem applicators shold be applied to the recipe when using these models. The provided [solid cap](https://www.printables.com/model/1866637-logitech-mx-mechanical-official-cad-keycap-referen/files) files from Logitech already contain stems in them. It is the users responsibility to ensure that the provided stem applicators do not negatively interfere with these.
 
 ## How to print the keycaps
-Load the STEP file into [Prusaslicer](https://www.prusa3d.com/p/prusaslicer/). If the STEP file is large, you may need to use a lower quality discretization resolution. The STEP file will contain different compounds named "primary", "markings", "nubs", and "braille". Assign colors to each compound per your preference. Depending on the keycap models and stem lengths you use, you may or may not need to enable supports.
+Load the STEP file into [PrusalSicer](https://www.prusa3d.com/p/prusaslicer/). If the STEP file is large, you may need to use a lower quality discretization resolution. The STEP file will contain different compounds named "primary", "markings", "nubs", and "braille". Assign colors to each compound per your preference. Depending on the keycap models and stem lengths you use, you may or may not need to enable supports.
 
 I recommend printing with PLA. If you use a softer filament like PETG, consider using a slightly tighter stem width so the keycaps won't slip off. Print per normal settings. If available, I strongly recommend using an automated color changing system. If you do not have one, you can perform your own manual color swaps though note this can be tedious. If doing your own color swaps, consider using a flatter keycap and a shallow marking depth to minimize the number of changes you need to perform. Though not recommended, you may also print the markings separate from the caps and press the markings into the caps in post processing. A dob of glue may help with mounting. This option is easier than manual color swaps but will produce a low quality keycap.
 
@@ -122,5 +164,5 @@ There are some improvements in organization that I didn't get around to. I would
 ## Known Issues
 * The code does very little error checking. If you feed it garbage, you will get garbage squared out. It is your responsiblity to invoke it with reasonable inputs.
 * This implementation is very inefficient. Data is re-read from disk for each key. It should be cached. There are many such improvements that can be made. In practice, I've found generation of even full keyboard sets to only take a minute or two.
-* The STEP file emitted by this software can be very large. When importing to Prusa slicer, you may need to either turn down the mesh resolution or emit fewer keys per STEP file.
+* The STEP file emitted by this software can be very large. When importing to a slicing progarm, you may need to either turn down the mesh resolution or emit fewer keys per STEP file.
 * Custom font files are not as reliable as I wish they were. They will be hit or miss from letter to font.
