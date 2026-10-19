@@ -35,7 +35,8 @@ def applySchemata(target, schemata):
     """merges schemata together"""
     for schema in schemata:
         print("Overlaying schemata at " + schema)
-        with open(schema) as f:
+        with open(schema, encoding='utf-8') as f:
+            print(f)
             overlay = json.load(f)
         if "overlays" in overlay:
             overlay = applySchemata(overlay, overlay["overlays"])
