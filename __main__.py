@@ -25,7 +25,7 @@ parser.add_argument(
     "-x",
     "--build-plate-x",
     help="Allowed width of a row of keys - should be less than the intended printer's build plate width",
-    default=160,
+    default=80,
     type=float,
 )
 cliArgs = parser.parse_args()
@@ -34,7 +34,7 @@ cliArgs = parser.parse_args()
 def applySchemata(target, schemata):
     """merges schemata together"""
     for schema in schemata:
-        print(schema)
+        print("Overlaying schemata at " + schema)
         with open(schema) as f:
             overlay = json.load(f)
         if "overlays" in overlay:
@@ -80,6 +80,8 @@ def actualize(data, recipe: Recipe):
     if "cap" in recipe:
         key.keyCap = glyph_applicator_cap.make_cap(recipe["cap"])
     else:
+        print("Recipe:")
+        print(recipe)
         raise Exception("Cap should be available here")
 
     if "stems" in recipe:
@@ -152,8 +154,10 @@ def visit(node, currentData: dict, currentRecipe: Recipe, indent: int):
             visit(child, currentData.copy(), currentRecipe.copy(), indent + 2)
 
 
+print("Making keys")
 visit(master, {}, {}, 0)
 
+print("Combining keys")
 primary: list[bd.Solid] = []
 markings: list[bd.Solid] = []
 braille: list[bd.Solid] = []
@@ -203,15 +207,17 @@ for key in keys:
         nubs.extend(key.nub.translate(curToNewVec).solids())
 
 
+print("Building part")
 primaryCompond = bd.Compound(primary, label="primary")
 markingsCompond = bd.Compound(markings, label="markings")
 brailleCompond = bd.Compound(braille, label="braille")
 nubsCompond = bd.Compound(nubs, label="nubs")
 
-
 keyBoard = bd.Compound(
     children=[primaryCompond, markingsCompond, brailleCompond, nubsCompond]
 )
+
+print("Exporting STEP")
 
 bd.export_step(keyBoard, "./result.step")
 
