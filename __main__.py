@@ -11,8 +11,7 @@ from deepmerge import always_merger
 from typing import NotRequired, TypedDict
 
 parser = argparse.ArgumentParser(
-    prog="key_board",
-    description="Parameterized keycaps program"
+    prog="key_board", description="Parameterized keycaps program"
 )
 
 parser.add_argument("schemata", type=str, nargs="+")
@@ -34,7 +33,7 @@ def applySchemata(target, schemata):
     """merges schemata together"""
     for schema in schemata:
         print("Overlaying schemata at " + schema)
-        with open(schema, encoding='utf-8') as f:
+        with open(schema, encoding="utf-8") as f:
             print(f)
             overlay = json.load(f)
         if "overlays" in overlay:
@@ -168,27 +167,30 @@ yy = 0
 maxY = 0
 spacing = 3
 
-reorganizedKeys = [
-  keys[6],
-  keys[7],
-  keys[0],
-  keys[8],
-  keys[9],
-  keys[10],
-  keys[11],
-  keys[4],
-  keys[12],
-  keys[3],
-  keys[1],
-  keys[13],
-  keys[14],
-  keys[15],
-  keys[16],
-  keys[17],
-  keys[2],
+# Use this to resort the keys. Only for laying out the print plate.
+"""
+keys = [
+    keys[6],
+    keys[7],
+    keys[0],
+    keys[8],
+    keys[9],
+    keys[10],
+    keys[11],
+    keys[4],
+    keys[12],
+    keys[3],
+    keys[1],
+    keys[13],
+    keys[14],
+    keys[15],
+    keys[16],
+    keys[17],
+    keys[2],
 ]
+"""
 
-for key in reorganizedKeys:
+for key in keys:
 
     keyBb = key.keyCap.bounding_box()
     curCenterVec = key.keyCap.center()
@@ -225,7 +227,6 @@ for key in reorganizedKeys:
         braille.extend(key.braille.translate(curToNewVec).solids())
     if key.nub:
         nubs.extend(key.nub.translate(curToNewVec).solids())
-
 
 
 print("Building part")

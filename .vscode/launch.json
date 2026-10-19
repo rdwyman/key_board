@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": "${workspaceFolder}/assets/keyboard.json",
+            "args": "${workspaceFolder}/demos/keyboard.json",
         },
         {
             "name": "Showboat",
@@ -15,7 +15,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": "${workspaceFolder}/assets/showboat.json",
+            "args": "${workspaceFolder}/demos/showboat.json",
         },
         {
             "name": "Korean Braille Keyboard",
@@ -23,7 +23,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": "${workspaceFolder}/assets/keyboardBrailleKorean.json",
+            "args": "${workspaceFolder}/demos/keyboardBrailleKorean.json",
         },
         {
             "name": "Braille Keyboard",
@@ -31,7 +31,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": "${workspaceFolder}/assets/keyboardBraille.json"
+            "args": "${workspaceFolder}/demos/keyboardBraille.json"
         },
         {
             "name": "CLI Overlay Test",
@@ -40,7 +40,7 @@
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/assets/keyboard.json",
+                "${workspaceFolder}/demos/keyboard.json",
                 "${workspaceFolder}/assets/overlays/applicatorBrailleStd.json"
             ]
         }
