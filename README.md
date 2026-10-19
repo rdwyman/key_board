@@ -1,15 +1,15 @@
-# Customizable Accessability Keycaps
-_There are as many unique accessibility needs as there are individulas with accessibility needs. One-size-fits all solutions are insufficient. 3D Printing is here to help._
+# Customizable Accessibility Keycaps
+_There are as many unique accessibility needs as there are individuals with accessibility needs. One-size-fits all solutions are insufficient. 3D Printing is here to help._
 
 ## Included Models
 
 ## Make it yours
-Here are some ideas on how to adapt this to your (or a loved ones) specific needs. These are just to get you started, your imaginiation is the only limit! Upload your make or remix so others can adapat it and our accessibility reach can grow!
+Here are some ideas on how to adapt this to your (or a loved ones) specific needs. These are just to get you started, your imagination is the only limit! Upload your make or remix so others can adapt it and our accessibility reach can grow!
 
 Accessibility:
 * Multi lingual accessibility - Accessibility is needed the world over - add braille support for another language. see the Korean Braille keyboard in `./assets/` for a proof of concept implementation!
 * Make a phonetic keyboard - "A" is for "Apple" - Help those still learning letter sounds, great for kids too! Use multiple "markings" applicators - one for the letter and one for the glyph.
-* Customize it - Make Braille dots larger, use your favorite accessiblity focused font, and more. Ones accessibility needs are unique, their keyboard should be too.
+* Customize it - Make Braille dots larger, use your favorite accessibility focused font, and more. Ones accessibility needs are unique, their keyboard should be too.
 * Use an accessible keycap - add a stick typer friendly keycap with a depression in the middle so the stick doesn't slip when typing - see the [stick keycap](./assets/keyCaps/stickTypingKeyCap.step) for an example implementation
 * Make some keycaps larger and others smaller based on particular accessibility or preference needs.
 

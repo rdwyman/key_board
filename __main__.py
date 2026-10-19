@@ -24,7 +24,7 @@ parser.add_argument(
     "-x",
     "--build-plate-x",
     help="Allowed width of a row of keys - should be less than the intended printer's build plate width",
-    default=80,
+    default=160,
     type=float,
 )
 cliArgs = parser.parse_args()
@@ -168,7 +168,27 @@ yy = 0
 maxY = 0
 spacing = 3
 
-for key in keys:
+reorganizedKeys = [
+  keys[6],
+  keys[7],
+  keys[0],
+  keys[8],
+  keys[9],
+  keys[10],
+  keys[11],
+  keys[4],
+  keys[12],
+  keys[3],
+  keys[1],
+  keys[13],
+  keys[14],
+  keys[15],
+  keys[16],
+  keys[17],
+  keys[2],
+]
+
+for key in reorganizedKeys:
 
     keyBb = key.keyCap.bounding_box()
     curCenterVec = key.keyCap.center()
@@ -205,6 +225,7 @@ for key in keys:
         braille.extend(key.braille.translate(curToNewVec).solids())
     if key.nub:
         nubs.extend(key.nub.translate(curToNewVec).solids())
+
 
 
 print("Building part")
